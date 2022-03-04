@@ -52,11 +52,12 @@ sign.addEventListener('click', async function() {
     } catch (error) {
         console.log(error);
     }
-    sign.style='display:none;';
+    
 }
     else{
         alert('login again');
     }
+    sign.style='display:none;';
 })
 ////////////////////////////////////////////////////////
 
