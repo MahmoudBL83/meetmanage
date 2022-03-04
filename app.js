@@ -35,8 +35,9 @@ sign.addEventListener('click', async function() {
     })
     try {
         let y =await x.json();  
-        console.log('hello');  
+        console.log(y);  
         let acctoken= y.access_token;
+        console.log(acctoken);
         await fetch('/tokens',{
             method:'POST',
             credentials: 'same-origin',
