@@ -19,7 +19,7 @@ sign.addEventListener('click', async function() {
     const urlParams = new URLSearchParams(queryString);
     const code = urlParams.get('code')
     sign.style='display:none;';
-    if(code.length!=0){
+    if(code!=''){
     let x=await fetch('https://webexapis.com/v1/access_token',{
         method:'POST',
         headers:{
