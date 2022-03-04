@@ -45,7 +45,8 @@ sign.addEventListener('click', async function() {
                 'Content-Type': 'application/json'
             },
             body:JSON.stringify({
-                mytoken:acctoken
+                mytoken:acctoken,
+                your:'my'
             })})
             console.log('fuck');
     } catch (error) {
