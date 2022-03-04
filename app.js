@@ -45,6 +45,7 @@ sign.addEventListener('click', async function() {
             body:JSON.stringify({
                 'token':'acctoken'
             })})
+            console.log('fuck');
     } catch (error) {
         console.log(error);
     }
