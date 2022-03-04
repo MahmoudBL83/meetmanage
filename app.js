@@ -19,7 +19,7 @@ sign.addEventListener('click', async function() {
     const urlParams = new URLSearchParams(queryString);
     const code = urlParams.get('code')
     sign.style='display:none;';
-    if(code!=''){
+    if(code.length!=''){
     let x=await fetch('https://webexapis.com/v1/access_token',{
         method:'POST',
         headers:{
@@ -46,8 +46,7 @@ sign.addEventListener('click', async function() {
                 'Content-Type': 'application/json'
             },
             body:JSON.stringify({
-                mytoken:acctoken,
-                your:'my'
+                'mytoken':acctoken,
             })})
             console.log('fuck');
     } catch (error) {
