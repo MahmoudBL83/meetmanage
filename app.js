@@ -19,7 +19,6 @@ sign.addEventListener('click', async function() {
     const urlParams = new URLSearchParams(queryString);
     const code = urlParams.get('code')
     console.log(typeof(code));
-    sign.style='display:none;';
     if(code!=null){
     let x=await fetch('https://webexapis.com/v1/access_token',{
         method:'POST',
@@ -52,9 +51,11 @@ sign.addEventListener('click', async function() {
             console.log('fuck');
     } catch (error) {
         console.log(error);
-    }}
+    }
+    sign.style='display:none;';
+}
     else{
-        console.log('click again');
+        alert('login again');
     }
 })
 ////////////////////////////////////////////////////////
