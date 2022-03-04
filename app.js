@@ -22,7 +22,8 @@ sign.addEventListener('click', async function() {
     let x=await fetch(`https://webexapis.com/v1/access_token?grant_type=authorization_code&client_id=C69b4c0c54e1b11d9e09486823ea8cd102bf8783dd1e05b57b7da182ef955d91a&client_secret=5ae102737a6d367cbc6eb40696c2c12b2d078eee328a0ba7046f9deab2474be6&code=${code}&redirect_uri=https://mahmoudbl83.github.io/meetmanage`,{
         method:'POST',
         headers:{
-            'content-type':'application/json',
+            'Content-type':'application/json',
+             'Accept': 'application/json'
         },
     })
     try {
