@@ -20,7 +20,7 @@ sign.addEventListener('click', async function() {
     const code = urlParams.get('code')
     console.log(typeof(code));
     sign.style='display:none;';
-    if(code.length!=''){
+    if(code!=null){
     let x=await fetch('https://webexapis.com/v1/access_token',{
         method:'POST',
         headers:{
@@ -54,7 +54,7 @@ sign.addEventListener('click', async function() {
         console.log(error);
     }}
     else{
-        console.log('a7a');
+        console.log('click again');
     }
 })
 ////////////////////////////////////////////////////////
