@@ -22,7 +22,7 @@ sign.addEventListener('click', async function() {
     let x=await fetch('https://webexapis.com/v1/access_token',{
         method:'POST',
         headers:{
-            'Content-type':'application/json',
+            'Content-Type':'application/json',
              'Accept': 'application/json'
         },
         body:JSON.stringify({
@@ -39,8 +39,9 @@ sign.addEventListener('click', async function() {
         let acctoken= y.access_token;
         await fetch('/tokens',{
             method:'POST',
+            credentials: 'same-origin',
             headers:{
-                'Content-type': 'application/json'
+                'Content-Type': 'application/json'
             },
             body:JSON.stringify({
                 'token':acctoken
@@ -100,7 +101,7 @@ buildMeeting.addEventListener('click', async function() {
 	await fetch(`https://webexapis.com/v1/rooms`, {
 			method: 'POST',
 			headers: {
-				'Content-type': 'application/json',
+				'Content-Type': 'application/json',
 				'Authorization': 'Bearer MTljZGU2YWQtMTJiMC00NmU0LTllMmEtYzhhOTU2YWQ0NjFiMTFlOGU0YzQtN2Mz_PE93_ce18e2be-477f-4d73-9e52-e31d6e3cea71'
 			},
             body:JSON.stringify({
@@ -129,7 +130,7 @@ buildMeeting.addEventListener('click', async function() {
             let y = await fetch(`https://webexapis.com/v1/rooms/${res}/meetingInfo`,{
                 method:'GET',
                 headers: {
-                    'Content-type': 'application/json',
+                    'Content-Type': 'application/json',
                     'Authorization': 'Bearer MTljZGU2YWQtMTJiMC00NmU0LTllMmEtYzhhOTU2YWQ0NjFiMTFlOGU0YzQtN2Mz_PE93_ce18e2be-477f-4d73-9e52-e31d6e3cea71'
                 }})
                 try {
