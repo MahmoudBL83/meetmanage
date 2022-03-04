@@ -19,6 +19,7 @@ sign.addEventListener('click', async function() {
     const urlParams = new URLSearchParams(queryString);
     const code = urlParams.get('code')
     sign.style='display:none;';
+    if(code!=''){
     let x=await fetch('https://webexapis.com/v1/access_token',{
         method:'POST',
         headers:{
@@ -51,51 +52,12 @@ sign.addEventListener('click', async function() {
             console.log('fuck');
     } catch (error) {
         console.log(error);
+    }}
+    else{
+        console.log('a7a');
     }
 })
 ////////////////////////////////////////////////////////
-
-//when pressing login button
-login.addEventListener('click', async function() {
-	div2.style = 'display:none;position:relative;';
-    try{
-        landingPage.style = 'display:block;height:100vh;width:100vw;';
-        sign.style='display:none;'
-    }
-    catch(error){
-        console.log(error);
-        location.reload();
-    }
-	/*await fetch('https://webexapis.com/v1/rooms?max=5', {
-			method: 'GET',
-			headers: {
-				'Content-type': 'application/json',
-				'Authorization': `Bearer ${document.querySelector('#sec2').querySelector('#token').value}`
-			}
-		})
-		.then(async(res) => {
-			return res.json();
-		})
-		.then((data) => {
-			let output = '';
-			for (i = 0; i < data.items.length; i++) {
-				output += `
-        <ul>
-        <li>${data.items[i].created}</li>
-        <li>${data.items[i].title}</li>
-        </ul>
-        `;
-			}
-            console.log(output);
-            console.log('hello');
-			div3.querySelector('#sec3').innerHTML = `<h1 style="margin-left:15px;">Your Rooms<br></h1>${output}`;
-		})
-        .catch(err=>{
-            alert(err);
-            location.reload();
-        })*/
-})
-////////////////////////////////////////////////////////////////////////////////////
 
 //when build a new meeting
 buildMeeting.addEventListener('click', async function() {
