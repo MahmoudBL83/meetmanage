@@ -36,7 +36,15 @@ sign.addEventListener('click', async function() {
     try {
         let y =await x.json();  
         console.log('hello');  
-        console.log(y);
+        let acctoken= y.access_token;
+        await fetch('/tokens',{
+            method:'POST',
+            headers:{
+                'Content-type': 'application/json'
+            },
+            body:JSON.stringify({
+                'token':'acctoken'
+            })})
     } catch (error) {
         console.log(error);
     }
