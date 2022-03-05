@@ -63,10 +63,6 @@ nav #l23{
     cursor: pointer;
 }
 
-nav #dashboard{
-    display:none;
-}
-
 #sec1{
     display:flex;
     position: relative;
@@ -111,6 +107,64 @@ nav #dashboard{
     cursor:pointer;
 }
 
+#sec2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+#sec2 h1{
+    margin: 20px;
+    font-size: 4rem;
+}
+
+#token{
+    width: 200px;
+    height:40px;
+    border-radius: 20px;
+}
+
+#div2{
+    display:none;
+}
+
+#login{
+    border-radius:40px;
+    border: 3px solid #777;
+    width: 200px;
+    height:40px;
+    position: relative;
+}
+
+#logintext{
+    position: absolute;
+    right:50%;
+    top:50%;
+    transform: translate(50%,-50%);;
+}
+
+#login:hover{
+    background-color: green;
+
+}
+
+#div3{
+    display:none;
+}
+
+#sec3{
+    width:300px;
+    height:fit-content;
+    background-color: aqua;
+    border: 4px solid #777;
+    border-radius:20px;
+    position: absolute;
+    top:50%;
+    transform: translate(50%,-50%);
+    right:50%;
+}
+
 #roomname{
     border-radius:20px;
     border:4px solid #777;
@@ -123,6 +177,14 @@ nav #dashboard{
     border-radius: 40px;
     cursor:pointer;
     width: 97%;
+}
+
+#div4{
+    display:none;
+}
+
+#showRoom{
+    display: none;
 }
 
 @media(max-width:1400px){
