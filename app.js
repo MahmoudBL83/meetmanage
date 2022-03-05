@@ -11,6 +11,7 @@ var div4 = document.querySelector('#div4');
 var signup = landingPage.querySelector('nav').querySelector('#l22');
 var signin = landingPage.querySelector('nav').querySelector('#l23');
 var showRoom = landingPage.querySelector('#showRoom');
+var meetlink =landingPage.querySelector('#meetlink');
 ///////////////////////////////////////////////////////////
 
 
@@ -111,7 +112,7 @@ buildMeeting.addEventListener('click', async function() {
                 }})
                 try {
                     let z=await y.json()
-                    location.replace(z.meetingLink);
+                    meetlink.innerHTML=z.meetingLink;
                 } catch (error) {
                     console.log(error);
                 }
