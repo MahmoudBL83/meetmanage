@@ -73,6 +73,7 @@ buildMeeting.addEventListener('click', async function() {
         let tok=localStorage.getItem('storedItem');
         localStorage.clear();
         console.log(tok);
+        if(tok!=null){
 	await fetch('https://webexapis.com/v1/rooms', {
 			method: 'POST',
 			headers: {
@@ -119,6 +120,9 @@ buildMeeting.addEventListener('click', async function() {
             alert(err);
             location.reload();
         })}
+    else{
+        alert('Please, login first')''
+    }}
         else{
             document.querySelector('#sec1').querySelector('input').style='border-radius:40px;border:4px solid red;height:40px;box-shadow: 0 2px 15px red;width:97%;height:90px;'
             setTimeout(()=> {document.querySelector('#sec1').querySelector('input').style='border-radius:40px;border:4px solid #777;height:90px;box-shadow: 0 2px 15px rgb(0 0 0 / 10%);width:97%;'},200)
