@@ -50,6 +50,10 @@ nav #l22{
     cursor: pointer;
 }
 
+#dashboard{
+    display:none;
+}
+
 nav #l23{
     display:block;
     position: absolute;
