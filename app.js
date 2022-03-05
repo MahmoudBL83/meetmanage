@@ -121,7 +121,7 @@ signup.addEventListener('click',()=>{
     signup.style='display:none;';
 })
 
-signin.addEventListener('click',()=>{
+signin.addEventListener('click',async()=>{
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     const code = urlParams.get('code');
