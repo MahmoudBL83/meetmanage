@@ -72,7 +72,7 @@ buildMeeting.addEventListener('click', async function() {
     if(document.querySelector('#sec1').querySelector('input').value.length!=0){
         let tok=localStorage.getItem('storedItem');
         console.log(tok);
-	await fetch(`https://webexapis.com/v1/rooms`, {
+	await fetch('https://webexapis.com/v1/rooms', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
@@ -89,7 +89,7 @@ buildMeeting.addEventListener('click', async function() {
                  method:'GET',
                 headers: {
                     'Content-type': 'application/json',
-                    'Authorization': 'Bearer MTljZGU2YWQtMTJiMC00NmU0LTllMmEtYzhhOTU2YWQ0NjFiMTFlOGU0YzQtN2Mz_PE93_ce18e2be-477f-4d73-9e52-e31d6e3cea71'
+                    'Authorization': `Bearer ${tok}`
                 }})
                 try {
                     let res2=await x.json();
@@ -105,7 +105,7 @@ buildMeeting.addEventListener('click', async function() {
                 method:'GET',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': 'Bearer MTljZGU2YWQtMTJiMC00NmU0LTllMmEtYzhhOTU2YWQ0NjFiMTFlOGU0YzQtN2Mz_PE93_ce18e2be-477f-4d73-9e52-e31d6e3cea71'
+                    'Authorization': `Bearer ${tok}`
                 }})
                 try {
                     let z=await y.json()
