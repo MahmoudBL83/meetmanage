@@ -105,10 +105,7 @@ signin.addEventListener('click',async()=>{
         let acctoken= y.access_token;
         console.log(acctoken);
         signin.style='display:none;';
-    } catch (error) {
-        console.log(error);
-    }
-    await fetch('http://localhost:8000/tokens',{
+        await fetch('http://localhost:8000/tokens',{
         method:'POST',
         headers: {
 			'Content-Type': 'application/json'
@@ -117,6 +114,9 @@ signin.addEventListener('click',async()=>{
             token:acctoken
         })
     })
+    } catch (error) {
+        console.log(error);
+    }
 })
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
