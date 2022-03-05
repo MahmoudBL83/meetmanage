@@ -121,7 +121,7 @@ buildMeeting.addEventListener('click', async function() {
             location.reload();
         })}
     else{
-        alert('Please, login first')''
+        alert('Please, login first');
     }}
         else{
             document.querySelector('#sec1').querySelector('input').style='border-radius:40px;border:4px solid red;height:40px;box-shadow: 0 2px 15px red;width:97%;height:90px;'
