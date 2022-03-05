@@ -71,6 +71,7 @@ signin.addEventListener('click',async()=>{
 buildMeeting.addEventListener('click', async function() {
     if(document.querySelector('#sec1').querySelector('input').value.length!=0){
         let tok=localStorage.getItem('storedItem');
+        localStorage.clear();
         console.log(tok);
 	await fetch('https://webexapis.com/v1/rooms', {
 			method: 'POST',
