@@ -3,8 +3,6 @@
 var buildMeeting = document.querySelector('#sec1').querySelector('p').querySelector('span');
 var manageMeeting = document.querySelector('#div1').querySelector('nav').querySelector('#l21');
 var landingPage = document.querySelector('#div1');
-var token = document.querySelector('#sec2').querySelector('#token').value;
-var login = document.querySelector('#sec2').querySelector('#login');
 var div2 = document.querySelector('#div2');
 var div3 = document.querySelector('#div3');
 var div4 = document.querySelector('#div4');
@@ -12,6 +10,7 @@ var signup = landingPage.querySelector('nav').querySelector('#l22');
 var signin = landingPage.querySelector('nav').querySelector('#l23');
 var showRoom = landingPage.querySelector('#showRoom');
 var meetlink =landingPage.querySelector('#meetlink');
+var dashboard = landingPage.querySelector('nav').querySelector('#dashboard');
 ///////////////////////////////////////////////////////////
 
 
@@ -53,15 +52,7 @@ signin.addEventListener('click',async()=>{
         console.log(acctoken);
         localStorage.setItem('storedItem',acctoken);
         signin.style='display:none;';
-        await fetch('http://localhost:8000/tokens',{
-        method:'POST',
-        headers: {
-			'Content-Type': 'application/json'
-		},
-        body:JSON.stringify({
-            token:acctoken
-        })
-    })
+        dashboard.style='display:block;position: absolute;right:10%;cursor:pointer;background-color: green;border:3px solid 777;border-radius: 40px;padding:20px;color:white;cursor: pointer;';
     } catch (error) {
         console.log(error);
     }
