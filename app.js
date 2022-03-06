@@ -143,17 +143,6 @@ messages.addEventListener('click',()=>{
 messageSend.addEventListener('click',async()=>{
     let tok=localStorage.getItem('temptok');
     let id=localStorage.getItem('roomId');
-    await fetch('https://webexapis.com/v1/messages',{
-        method:'POST',
-        headers:{
-            'Content-Type':'application/json',
-            'Authorization':`Bearer ${tok}`
-        },
-        body:JSON.stringify({
-            'roomId':id,
-            'text':text.value,
-        })
-    })
     let res=await fetch('https://webexapis.com/v1/messages',{
         method:'POST',
         headers:{
