@@ -209,6 +209,35 @@ nav #l23{
     cursor: pointer;
 }
 
+#div4 #cont{
+    width:70%;
+    height:100%;
+}
+
+#back2{
+    box-shadow: 0 2px 15px rgb(0 0 0 / 10%);
+    background-color: white;
+    color:red;
+    border-radius: 20px;
+    border:4px solid #777;
+    height: 116px;
+    font-size: 4rem;
+    text-align: center;
+    cursor: pointer;
+}
+
+#messageSend{
+    box-shadow: 0 2px 15px rgb(0 0 0 / 10%);
+    background-color: white;
+    color:red;
+    border-radius: 20px;
+    border:4px solid #777;
+    height: 116px;
+    font-size: 4rem;
+    text-align: center;
+    cursor: pointer;
+}
+
 @media(max-width:1400px){
     #img1{
         display:none;
