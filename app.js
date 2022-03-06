@@ -12,7 +12,9 @@ var showRoom = landingPage.querySelector('#showRoom');
 var meetlink =landingPage.querySelector('#meetlink');
 var dashboard = landingPage.querySelector('nav').querySelector('#dashboard');
 var messages=div2.querySelector('#messages');
-var messageSend=div4.querySelector('#messageSend')
+var messageSend=div4.querySelector('#messageSend');
+var text=div4.querySelector('#message');
+var file=div4.querySelector('#file')
 ///////////////////////////////////////////////////////////
 
 
@@ -47,6 +49,7 @@ signin.addEventListener('click',async()=>{
             "redirect_uri":"https://mahmoudbl83.github.io/meetmanage/"
         })
     })
+    //save the access token of the user
     try {
         let y =await x.json();    
         let acctoken= y.access_token;
@@ -135,7 +138,12 @@ div2.querySelector('#back').addEventListener('click',()=>{
 
 messages.addEventListener('click',()=>{
     div2.style='display:none;';
-    div4.style='display:block;';
+    div4.style='display:flex;height:100vh;width:100vw;justify-content:center;align-items:center;';
+})
+
+file.addEventListener('change',(evt)=>{
+    let fileslist=evt.target.files;
+    localStorage.setItem('fileslist',fileslist)
 })
 
 messageSend.addEventListener('click',async()=>{
@@ -149,10 +157,12 @@ messageSend.addEventListener('click',async()=>{
         },
         body:JSON.stringify({
             'roomId':id,
-            'text':'PROJECT UPDATE',
+            'text':text.value,
+            'files':localStorage.getItem('fileslist')
         })
     })
 })
+
 
 
 
