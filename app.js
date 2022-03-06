@@ -163,7 +163,7 @@ messageSend.addEventListener('click',async()=>{
     })
 })
 
-div4.querySelector('#div4').addEventListener('click',()=>{
+div4.querySelector('#back2').addEventListener('click',()=>{
     landingPage.style='display:block;height:100vh;width:100vw;';
     div4.style='display:none';
     div2.style='display:none';
