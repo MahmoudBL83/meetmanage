@@ -11,6 +11,8 @@ var signin = landingPage.querySelector('nav').querySelector('#l23');
 var showRoom = landingPage.querySelector('#showRoom');
 var meetlink =landingPage.querySelector('#meetlink');
 var dashboard = landingPage.querySelector('nav').querySelector('#dashboard');
+var messages=div2.querySelector('#messages');
+var messageSend=div4.querySelector('#messageSend')
 ///////////////////////////////////////////////////////////
 
 
@@ -46,10 +48,8 @@ signin.addEventListener('click',async()=>{
         })
     })
     try {
-        let y =await x.json();  
-        console.log(y);  
+        let y =await x.json();    
         let acctoken= y.access_token;
-        console.log(acctoken);
         localStorage.setItem('storedItem',acctoken);
         signin.style='display:none;';
         dashboard.style='display:block;position: absolute;right:10%;cursor:pointer;background-color: green;border:3px solid 777;border-radius: 40px;padding:20px;color:white;cursor: pointer;';
@@ -63,8 +63,6 @@ signin.addEventListener('click',async()=>{
 buildMeeting.addEventListener('click', async function() {
     if(document.querySelector('#sec1').querySelector('input').value.length!=0){
         let tok=localStorage.getItem('storedItem');
-        localStorage.clear();
-        console.log(tok);
         if(tok!=null){
 	await fetch('https://webexapis.com/v1/rooms', {
 			method: 'POST',
@@ -87,14 +85,13 @@ buildMeeting.addEventListener('click', async function() {
                 }})
                 try {
                     let res2=await x.json();
-                    console.log(res2);
+                    localStorage.setItem('roomId',res2.items[0].id)
                     return res2.items[0].id;
                 } catch (error) {
                     console.log(error);
                 }
 		})
         .then(async function(res){
-            console.log(res);
             let y = await fetch(`https://webexapis.com/v1/rooms/${res}/meetingInfo`,{
                 method:'GET',
                 headers: {
@@ -132,6 +129,28 @@ div2.querySelector('#back').addEventListener('click',()=>{
     landingPage.style='display:block;height:100vh;width:100vw;';
     div2.style='display:none';
 })
+
+messages.addEventListener('click',()=>{
+    div2.style='display:none;';
+    div4.style='display:block;';
+})
+
+messageSend.addEventListener('click',()=>{
+    let tok=localStorage.getItem('storedItem');
+    let id=localStorage.getItem('roomId');
+    let res=await fetch('https://webexapis.com/v1/messages',{
+        method:'POST',
+        headers:{
+            'Content-Type':'application/json',
+            'Authorization':`Bearer ${tok}`
+        },
+        body:JSON.stringify({
+            'roomId':id,
+            'text':'PROJECT UPDATE',
+        })
+    })
+})
+
 
 
 
