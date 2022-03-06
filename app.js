@@ -175,6 +175,7 @@ messageSend.addEventListener('click',async()=>{
 
 div4.querySelector('#back2').addEventListener('click',()=>{
     div4.style='display:none';
+    div2.style='display:flex;justify-content: center;align-items: center;background-color:azure;height:100vh';
 })
 
 //to delet las message sent
