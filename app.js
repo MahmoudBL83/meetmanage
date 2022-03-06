@@ -66,6 +66,7 @@ buildMeeting.addEventListener('click', async function() {
         localStorage.setItem('tok1',tok);
         let tok2=localStorage.getItem('tok1');
         localStorage.removeItem('tok1');
+        console.log(tok2);
         if(tok2!=null){
 	await fetch('https://webexapis.com/v1/rooms', {
 			method: 'POST',
@@ -141,7 +142,7 @@ messages.addEventListener('click',()=>{
 messageSend.addEventListener('click',async()=>{
     let tok=localStorage.getItem('storedItem');
     let id=localStorage.getItem('roomId');
-    let res=await fetch('https://webexapis.com/v1/messages',{
+    fetch('https://webexapis.com/v1/messages',{
         method:'POST',
         headers:{
             'Content-Type':'application/json',
