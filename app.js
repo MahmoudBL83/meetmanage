@@ -91,7 +91,7 @@ buildMeeting.addEventListener('click', async function() {
                 }})
                 try {
                     let res2=await x.json();
-                    sessionStorage.setItem('roomId',res2.items[0].id)
+                    localStorage.setItem('roomId',res2.items[0].id)
                     return res2.items[0].id;
                 } catch (error) {
                     console.log(error);
@@ -161,6 +161,12 @@ messageSend.addEventListener('click',async()=>{
             'files':localStorage.getItem('fileslist')
         })
     })
+})
+
+div4.querySelector('#div4').addEventListener('click',()=>{
+    landingPage.style='display:block;height:100vh;width:100vw;';
+    div4.style='display:none';
+    div2.style='display:none';
 })
 
 
