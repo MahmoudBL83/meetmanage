@@ -135,7 +135,7 @@ messages.addEventListener('click',()=>{
     div4.style='display:block;';
 })
 
-messageSend.addEventListener('click',()=>{
+messageSend.addEventListener('click',async()=>{
     let tok=localStorage.getItem('storedItem');
     let id=localStorage.getItem('roomId');
     let res=await fetch('https://webexapis.com/v1/messages',{
