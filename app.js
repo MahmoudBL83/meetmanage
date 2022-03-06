@@ -125,7 +125,12 @@ buildMeeting.addEventListener('click', async function() {
 //dashboard
 dashboard.addEventListener('click',()=>{
     landingPage.style='display:none;';
-    div2.style='display:flex;justify-content: center;align-items: center;background-color:azure';
+    div2.style='display:flex;justify-content: center;align-items: center;background-color:azure;height:100vh';
+})
+
+div2.querySelector('#back').addEventListener('click',()=>{
+    landingPage.style='display:block;height:100vh;width:100vw;';
+    div2.style='display:none';
 })
 
 
