@@ -203,6 +203,9 @@ nav #l23{
     color:red;
     border-radius: 20px;
     border:4px solid #777;
+    height: 116px;
+    font-size: 4rem;
+    text-align: center;
 }
 
 @media(max-width:1400px){
