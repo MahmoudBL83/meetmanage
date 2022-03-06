@@ -50,7 +50,7 @@ signin.addEventListener('click',async()=>{
     try {
         let y =await x.json();    
         let acctoken= y.access_token;
-        localStorage.setItem('storedItem',acctoken);
+        sessionStorage.setItem('storedItem',acctoken);
         signin.style='display:none;';
         dashboard.style='display:block;position: absolute;right:10%;cursor:pointer;background-color: green;border:3px solid 777;border-radius: 40px;padding:20px;color:white;cursor: pointer;';
     } catch (error) {
@@ -62,17 +62,14 @@ signin.addEventListener('click',async()=>{
 //when build a new meeting
 buildMeeting.addEventListener('click', async function() {
     if(document.querySelector('#sec1').querySelector('input').value.length!=0){
-        let tok=localStorage.getItem('storedItem');
-        localStorage.setItem('tok1',tok);
-        let tok2=localStorage.getItem('tok1');
-        localStorage.removeItem('tok1');
-        console.log(tok2);
-        if(tok2!=null){
+        let tok=sessionStorage.getItem('storedItem');
+        console.log(tok);
+        if(tok!=null){
 	await fetch('https://webexapis.com/v1/rooms', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
-				'Authorization': `Bearer ${tok2}`
+				'Authorization': `Bearer ${tok}`
 			},
             body:JSON.stringify({
                 "isLocked": false,
@@ -85,11 +82,11 @@ buildMeeting.addEventListener('click', async function() {
                  method:'GET',
                 headers: {
                     'Content-type': 'application/json',
-                    'Authorization': `Bearer ${tok2}`
+                    'Authorization': `Bearer ${tok}`
                 }})
                 try {
                     let res2=await x.json();
-                    localStorage.setItem('roomId',res2.items[0].id)
+                    sessionStorage.setItem('roomId',res2.items[0].id)
                     return res2.items[0].id;
                 } catch (error) {
                     console.log(error);
@@ -100,7 +97,7 @@ buildMeeting.addEventListener('click', async function() {
                 method:'GET',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${tok2}`
+                    'Authorization': `Bearer ${tok}`
                 }})
                 try {
                     let z=await y.json()
@@ -140,8 +137,8 @@ messages.addEventListener('click',()=>{
 })
 
 messageSend.addEventListener('click',async()=>{
-    let tok=localStorage.getItem('storedItem');
-    let id=localStorage.getItem('roomId');
+    let tok=sessionStorage.getItem('storedItem');
+    let id=sessionStorage.getItem('roomId');
     fetch('https://webexapis.com/v1/messages',{
         method:'POST',
         headers:{
