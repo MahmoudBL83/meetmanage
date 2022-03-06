@@ -68,7 +68,6 @@ buildMeeting.addEventListener('click', async function() {
         let tok=localStorage.getItem('storedItem');
         localStorage.setItem('temptok',tok)
         localStorage.removeItem('storedItem')
-        console.log(tok);
         if(tok!=null){
 	await fetch('https://webexapis.com/v1/rooms', {
 			method: 'POST',
@@ -149,7 +148,7 @@ file.addEventListener('change',(evt)=>{
 messageSend.addEventListener('click',async()=>{
     let tok=localStorage.getItem('temptok');
     let id=localStorage.getItem('roomId');
-    fetch('https://webexapis.com/v1/messages',{
+    let res=await fetch('https://webexapis.com/v1/messages',{
         method:'POST',
         headers:{
             'Content-Type':'application/json',
@@ -160,12 +159,28 @@ messageSend.addEventListener('click',async()=>{
             'text':text.value,
         })
     })
+    try{
+        localStorage.setItem('messageid',res.id)
+    }
+    catch(err){
+        console.log(err);
+    }
 })
 
 div4.querySelector('#back2').addEventListener('click',()=>{
     landingPage.style='display:block;height:100vh;width:100vw;';
     div4.style='display:none';
-    div2.style='display:none';
+})
+
+//to delet las message sent
+div4.querySelector('#deletmessage').addEventListener('click',()=>{
+    let x=localStorage.getItem('messageid');
+    let tok=localStorage.getItem('temptok');
+    fetch(`https://webexapis.com/v1/messages/${x}`,{
+        headers:{
+            'Authorization':`Bearer ${tok}`
+        }
+    })
 })
 
 
