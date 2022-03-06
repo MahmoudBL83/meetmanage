@@ -158,7 +158,6 @@ messageSend.addEventListener('click',async()=>{
         body:JSON.stringify({
             'roomId':id,
             'text':text.value,
-            'files':localStorage.getItem('fileslist')
         })
     })
 })
