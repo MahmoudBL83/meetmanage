@@ -184,6 +184,7 @@ div4.querySelector('#deletmessage').addEventListener('click',()=>{
     let x=localStorage.getItem('messageid');
     let tok=localStorage.getItem('temptok');
     fetch(`https://webexapis.com/v1/messages/${x}`,{
+	    method:'DELETE',
         headers:{
             'Authorization':`Bearer ${tok}`
         }
