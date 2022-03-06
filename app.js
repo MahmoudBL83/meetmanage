@@ -188,6 +188,7 @@ div4.querySelector('#deletmessage').addEventListener('click',()=>{
             'Authorization':`Bearer ${tok}`
         }
     })
+	console.log(x);
 })
 
 
