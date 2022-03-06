@@ -139,8 +139,8 @@ messages.addEventListener('click',()=>{
 })
 
 messageSend.addEventListener('click',async()=>{
-    let tok=sessionStorage.getItem('temptok');
-    let id=sessionStorage.getItem('roomId');
+    let tok=localStorage.getItem('temptok');
+    let id=localStorage.getItem('roomId');
     fetch('https://webexapis.com/v1/messages',{
         method:'POST',
         headers:{
