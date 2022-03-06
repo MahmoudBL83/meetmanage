@@ -166,7 +166,8 @@ messageSend.addEventListener('click',async()=>{
         })
     })
     try{
-        localStorage.setItem('messageid',res.id)
+	    let u= await res.json()
+        localStorage.setItem('messageid',u.id)
     }
     catch(err){
         console.log(err);
