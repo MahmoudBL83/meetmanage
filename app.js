@@ -50,7 +50,7 @@ signin.addEventListener('click',async()=>{
     try {
         let y =await x.json();    
         let acctoken= y.access_token;
-        sessionStorage.setItem('storedItem',acctoken);
+        localStorage.setItem('storedItem',acctoken);
         signin.style='display:none;';
         dashboard.style='display:block;position: absolute;right:10%;cursor:pointer;background-color: green;border:3px solid 777;border-radius: 40px;padding:20px;color:white;cursor: pointer;';
     } catch (error) {
@@ -62,7 +62,9 @@ signin.addEventListener('click',async()=>{
 //when build a new meeting
 buildMeeting.addEventListener('click', async function() {
     if(document.querySelector('#sec1').querySelector('input').value.length!=0){
-        let tok=sessionStorage.getItem('storedItem');
+        let tok=localStorage.getItem('storedItem');
+        localStorage.setItem('temptok',tok)
+        localStorage.removeItem('storedItem')
         console.log(tok);
         if(tok!=null){
 	await fetch('https://webexapis.com/v1/rooms', {
@@ -137,7 +139,7 @@ messages.addEventListener('click',()=>{
 })
 
 messageSend.addEventListener('click',async()=>{
-    let tok=sessionStorage.getItem('storedItem');
+    let tok=sessionStorage.getItem('temptok');
     let id=sessionStorage.getItem('roomId');
     fetch('https://webexapis.com/v1/messages',{
         method:'POST',
