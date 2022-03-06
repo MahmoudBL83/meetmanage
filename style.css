@@ -206,6 +206,7 @@ nav #l23{
     height: 116px;
     font-size: 4rem;
     text-align: center;
+    cursor: pointer;
 }
 
 @media(max-width:1400px){
