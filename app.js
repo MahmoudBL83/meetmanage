@@ -28,6 +28,7 @@ signup.addEventListener('click',()=>{
 if(window.location.href.indexOf("code") > -1){
     signup.style='display:none;'
     signin.style='display:none;'
+    dashboard.style='display:block;position: absolute;right:10%;cursor:pointer;background-color: green;border:3px solid 777;border-radius: 40px;padding:20px;color:white;cursor: pointer;';
 }
 
 //Signing In
