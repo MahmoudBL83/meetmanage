@@ -27,6 +27,7 @@ signup.addEventListener('click',()=>{
 
 if(window.location.href.indexOf("code") > -1){
     signup.style='display:none;'
+    signin.style='display:none;'
 }
 
 //Signing In
