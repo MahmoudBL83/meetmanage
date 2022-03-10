@@ -61,14 +61,13 @@ signin.addEventListener('click',async()=>{
 })
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
-let tok=localStorage.getItem('storedItem');
-localStorage.setItem('temptok',tok)
-
 //when build a new meeting
 buildMeeting.addEventListener('click', async function() {
     if(document.querySelector('#sec1').querySelector('input').value.length!=0){
+        let tok=localStorage.getItem('storedItem');
+        localStorage.setItem('temptok',tok)
         localStorage.removeItem('storedItem')
-        if(tok!=null){
+        if(tok!=null&&signin.style!='display:none;'){
 	await fetch('https://webexapis.com/v1/rooms', {
 			method: 'POST',
 			headers: {
@@ -123,9 +122,6 @@ buildMeeting.addEventListener('click', async function() {
         }
 })
 
-if(localStorage.getItem('temptok')!=null){
-    signin.style='display:none;';
-}
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
 //dashboard
