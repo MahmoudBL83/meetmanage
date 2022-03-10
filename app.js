@@ -191,6 +191,14 @@ div4.querySelector('#deletmessage').addEventListener('click',()=>{
     })
 })
 
+function confirmExit()
+{
+ window.location.href='https://mahmoudbl83.github.io/meetmanage/';
+ return true;
+}
+
+window.onbeforeunload = confirmExit;
+
 
 
 
