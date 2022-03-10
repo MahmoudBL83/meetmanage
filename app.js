@@ -22,13 +22,10 @@ var file=div4.querySelector('#file')
 //Signing Up
 signup.addEventListener('click',()=>{
     window.location.replace('https://webexapis.com/v1/authorize?client_id=C69b4c0c54e1b11d9e09486823ea8cd102bf8783dd1e05b57b7da182ef955d91a&response_type=code&redirect_uri=https%3A%2F%2Fmahmoudbl83.github.io%2Fmeetmanage%2F&scope=spark-admin%3Abroadworks_subscribers_write%20meeting%3Aadmin_preferences_write%20spark%3Aall%20meeting%3Aadmin_preferences_read%20analytics%3Aread_all%20meeting%3Aadmin_participants_read%20spark-admin%3Apeople_write%20spark%3Apeople_write%20spark%3Aorganizations_read%20spark-admin%3Awholesale_customers_write%20spark-admin%3Aworkspace_metrics_read%20spark-admin%3Aplaces_read%20spark-admin%3Awholesale_billing_reports_read%20spark-compliance%3Ateam_memberships_write%20spark%3Aplaces_read%20spark-compliance%3Amessages_read%20spark-admin%3Adevices_write%20spark-admin%3Aworkspaces_write%20spark%3Acalls_write%20spark-compliance%3Ameetings_write%20meeting%3Aadmin_schedule_write%20Identity%3Aone_time_password%20identity%3Aplaceonetimepassword_create%20spark-admin%3Aorganizations_write%20spark-admin%3Aworkspace_locations_read%20spark%3Adevices_write%20spark-admin%3Abroadworks_billing_reports_write%20spark%3Axapi_commands%20spark-compliance%3Awebhooks_read%20spark-admin%3Acall_qualities_read%20spark-compliance%3Amessages_write%20spark%3Akms%20spark-admin%3Awholesale_customers_read%20meeting%3Aparticipants_write%20spark-admin%3Awholesale_subscribers_read%20spark-admin%3Apeople_read%20meeting%3Aadmin_transcripts_read%20spark-compliance%3Amemberships_read%20spark-admin%3Aresource_groups_read%20meeting%3Arecordings_read%20meeting%3Aparticipants_read%20meeting%3Apreferences_write%20spark-admin%3Awholesale_billing_reports_write%20meeting%3Aadmin_recordings_read%20spark-admin%3Aorganizations_read%20spark-compliance%3Awebhooks_write%20meeting%3Atranscripts_read%20spark%3Axapi_statuses%20meeting%3Aschedules_write%20spark-compliance%3Ateam_memberships_read%20spark-admin%3Awholesale_subscribers_write%20spark-admin%3Adevices_read%20meeting%3Acontrols_read%20spark-admin%3Ahybrid_clusters_read%20spark-admin%3Aworkspace_locations_write%20spark-admin%3Abroadworks_billing_reports_read%20spark-admin%3Atelephony_config_read%20spark-admin%3Atelephony_config_write%20meeting%3Aadmin_schedule_read%20spark-admin%3Abroadworks_enterprises_write%20meeting%3Aschedules_read%20spark-compliance%3Amemberships_write%20spark-admin%3Abroadworks_enterprises_read%20spark%3Acalls_read%20spark-admin%3Aroles_read%20meeting%3Arecordings_write%20meeting%3Apreferences_read%20spark-compliance%3Ameetings_read%20spark-admin%3Aworkspaces_read%20spark%3Adevices_read%20spark-admin%3Aresource_group_memberships_read%20spark-compliance%3Aevents_read%20spark-admin%3Aresource_group_memberships_write%20spark-compliance%3Arooms_read%20spark-admin%3Abroadworks_subscribers_read%20meeting%3Acontrols_write%20spark-admin%3Ahybrid_connectors_read%20audit%3Aevents_read%20meeting%3Aadmin_recordings_write%20spark-compliance%3Ateams_read%20spark-admin%3Aplaces_write%20spark-admin%3Alicenses_read%20spark-compliance%3Arooms_write%20spark%3Aplaces_write');
-    console.log('hello');
 })
 
 if(window.location.href.indexOf("code") > -1){
     signup.style='display:none;'
-    signin.style='display:none;'
-    dashboard.style='display:block;position: absolute;right:10%;cursor:pointer;background-color: green;border:3px solid 777;border-radius: 40px;padding:20px;color:white;cursor: pointer;';
 }
 
 //Signing In
@@ -62,6 +59,10 @@ signin.addEventListener('click',async()=>{
         console.log(error);
     }
 })
+
+if(localStorage.getItem('storedItem')!=null){
+    signin.style='display:none;';
+}
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
 //when build a new meeting
@@ -145,6 +146,17 @@ messages.addEventListener('click',()=>{
 messageSend.addEventListener('click',async()=>{
     let tok=localStorage.getItem('temptok');
     let id=localStorage.getItem('roomId');
+    await fetch('https://webexapis.com/v1/messages',{
+        method:'POST',
+        headers:{
+            'Content-Type':'application/json',
+            'Authorization':`Bearer ${tok}`
+        },
+        body:JSON.stringify({
+            'roomId':id,
+            'text':text.value,
+        })
+    })
     let res=await fetch('https://webexapis.com/v1/messages',{
         method:'POST',
         headers:{
@@ -157,7 +169,7 @@ messageSend.addEventListener('click',async()=>{
         })
     })
     try{
-	    let u= await res.json()
+        let u=await res.json();
         localStorage.setItem('messageid',u.id)
     }
     catch(err){
@@ -166,8 +178,8 @@ messageSend.addEventListener('click',async()=>{
 })
 
 div4.querySelector('#back2').addEventListener('click',()=>{
-    div4.style='display:none';
     div2.style='display:flex;justify-content: center;align-items: center;background-color:azure;height:100vh';
+    div4.style='display:none';
 })
 
 //to delet las message sent
@@ -175,12 +187,11 @@ div4.querySelector('#deletmessage').addEventListener('click',()=>{
     let x=localStorage.getItem('messageid');
     let tok=localStorage.getItem('temptok');
     fetch(`https://webexapis.com/v1/messages/${x}`,{
-	    method:'DELETE',
+        method:'DELETE',
         headers:{
             'Authorization':`Bearer ${tok}`
         }
     })
-	console.log(x);
 })
 
 
