@@ -60,9 +60,6 @@ signin.addEventListener('click',async()=>{
     }
 })
 
-if(localStorage.getItem('storedItem')!=null){
-    signin.style='display:none;';
-}
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
 //when build a new meeting
