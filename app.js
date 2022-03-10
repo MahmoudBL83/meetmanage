@@ -61,14 +61,15 @@ signin.addEventListener('click',async()=>{
         console.log(error);
     }
 })
+
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
 //when build a new meeting
 buildMeeting.addEventListener('click', async function() {
     if(document.querySelector('#sec1').querySelector('input').value.length!=0){
         let tok=localStorage.getItem('storedItem');
-        localStorage.setItem('temptok',tok)
-        localStorage.removeItem('storedItem')
+        //localStorage.setItem('temptok',tok)
+        //localStorage.removeItem('storedItem')
         if(tok!=null){
 	    await fetch('https://webexapis.com/v1/rooms', {
 			method: 'POST',
