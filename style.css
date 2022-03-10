@@ -1,6 +1,7 @@
 body{
     margin:0;
     font-family: 'Cairo', sans-serif;
+    overflow: hidden;
 }
 
 #div1{
