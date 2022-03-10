@@ -67,8 +67,8 @@ buildMeeting.addEventListener('click', async function() {
         let tok=localStorage.getItem('storedItem');
         localStorage.setItem('temptok',tok)
         localStorage.removeItem('storedItem')
-        if(tok!=null&&signin.style=="display: none;"){
-	await fetch('https://webexapis.com/v1/rooms', {
+        if(tok!=null&&signin.style.display=='none'){
+	    await fetch('https://webexapis.com/v1/rooms', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
