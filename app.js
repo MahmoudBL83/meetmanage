@@ -68,7 +68,7 @@ if(localStorage.getItem('storedItem')!=null){
     dashboard.style='display:block;position: absolute;right:10%;cursor:pointer;background-color: green;border:3px solid 777;border-radius: 40px;padding:20px;color:white;cursor: pointer;';
 }
 
-if(localStorage.getItem('storedItem')==null&&signin.style.display!='none'){
+if(localStorage.getItem('storedItem')==null&&signin.style.display=='none'){
     location.reload();
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////
