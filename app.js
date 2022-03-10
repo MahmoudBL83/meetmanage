@@ -59,14 +59,14 @@ signin.addEventListener('click',async()=>{
         console.log(error);
     }
 })
-
 ////////////////////////////////////////////////////////////////////////////////////////////////
+
+let tok=localStorage.getItem('storedItem');
+localStorage.setItem('temptok',tok)
 
 //when build a new meeting
 buildMeeting.addEventListener('click', async function() {
     if(document.querySelector('#sec1').querySelector('input').value.length!=0){
-        let tok=localStorage.getItem('storedItem');
-        localStorage.setItem('temptok',tok)
         localStorage.removeItem('storedItem')
         if(tok!=null){
 	await fetch('https://webexapis.com/v1/rooms', {
@@ -122,6 +122,10 @@ buildMeeting.addEventListener('click', async function() {
             setTimeout(()=> {document.querySelector('#sec1').querySelector('input').style='border-radius:40px;border:4px solid #777;height:90px;box-shadow: 0 2px 15px rgb(0 0 0 / 10%);width:97%;'},200)
         }
 })
+
+if(localStorage.getItem('temptok')!=null){
+    signin.style='display:none;';
+}
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
 //dashboard
