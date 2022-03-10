@@ -54,19 +54,6 @@ nav #l22{
     display:none;
 }
 
-nav #l23{
-    display:block;
-    position: absolute;
-    right:10%;
-    cursor:pointer;
-    background-color: green;
-    border:3px solid 777;
-    border-radius: 40px;
-    padding:20px;
-    color:white;
-    cursor: pointer;
-}
-
 #sec1{
     display:flex;
     position: relative;
