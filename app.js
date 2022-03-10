@@ -124,7 +124,7 @@ buildMeeting.addEventListener('click', async function() {
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
 //going to dashboard
-dashboard.addEventListener('click',()=>{
+dashboard.addEventListener('click',async()=>{
     landingPage.style='display:none;';
     document.querySelector('#roomsec').style='display:flex;flex-wrap:wrap;justify-content:center;align-items:center;height:100vh;width:100vw;background-color:azure;';
     let x=await fetch('https://webexapis.com/v1/rooms?sortBy=created&max=1000',{
