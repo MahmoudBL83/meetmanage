@@ -17,20 +17,13 @@ var text=div4.querySelector('#message');
 var file=div4.querySelector('#file')
 ///////////////////////////////////////////////////////////
 
+
+//redirecting the user to webex page
 if(window.location.href.indexOf("code") <= -1){
 window.location.replace('https://webexapis.com/v1/authorize?client_id=C69b4c0c54e1b11d9e09486823ea8cd102bf8783dd1e05b57b7da182ef955d91a&response_type=code&redirect_uri=https%3A%2F%2Fmahmoudbl83.github.io%2Fmeetmanage%2F&scope=spark-admin%3Abroadworks_subscribers_write%20meeting%3Aadmin_preferences_write%20spark%3Aall%20meeting%3Aadmin_preferences_read%20analytics%3Aread_all%20meeting%3Aadmin_participants_read%20spark-admin%3Apeople_write%20spark%3Apeople_write%20spark%3Aorganizations_read%20spark-admin%3Awholesale_customers_write%20spark-admin%3Aworkspace_metrics_read%20spark-admin%3Aplaces_read%20spark-admin%3Awholesale_billing_reports_read%20spark-compliance%3Ateam_memberships_write%20spark%3Aplaces_read%20spark-compliance%3Amessages_read%20spark-admin%3Adevices_write%20spark-admin%3Aworkspaces_write%20spark%3Acalls_write%20spark-compliance%3Ameetings_write%20meeting%3Aadmin_schedule_write%20Identity%3Aone_time_password%20identity%3Aplaceonetimepassword_create%20spark-admin%3Aorganizations_write%20spark-admin%3Aworkspace_locations_read%20spark%3Adevices_write%20spark-admin%3Abroadworks_billing_reports_write%20spark%3Axapi_commands%20spark-compliance%3Awebhooks_read%20spark-admin%3Acall_qualities_read%20spark-compliance%3Amessages_write%20spark%3Akms%20spark-admin%3Awholesale_customers_read%20meeting%3Aparticipants_write%20spark-admin%3Awholesale_subscribers_read%20spark-admin%3Apeople_read%20meeting%3Aadmin_transcripts_read%20spark-compliance%3Amemberships_read%20spark-admin%3Aresource_groups_read%20meeting%3Arecordings_read%20meeting%3Aparticipants_read%20meeting%3Apreferences_write%20spark-admin%3Awholesale_billing_reports_write%20meeting%3Aadmin_recordings_read%20spark-admin%3Aorganizations_read%20spark-compliance%3Awebhooks_write%20meeting%3Atranscripts_read%20spark%3Axapi_statuses%20meeting%3Aschedules_write%20spark-compliance%3Ateam_memberships_read%20spark-admin%3Awholesale_subscribers_write%20spark-admin%3Adevices_read%20meeting%3Acontrols_read%20spark-admin%3Ahybrid_clusters_read%20spark-admin%3Aworkspace_locations_write%20spark-admin%3Abroadworks_billing_reports_read%20spark-admin%3Atelephony_config_read%20spark-admin%3Atelephony_config_write%20meeting%3Aadmin_schedule_read%20spark-admin%3Abroadworks_enterprises_write%20meeting%3Aschedules_read%20spark-compliance%3Amemberships_write%20spark-admin%3Abroadworks_enterprises_read%20spark%3Acalls_read%20spark-admin%3Aroles_read%20meeting%3Arecordings_write%20meeting%3Apreferences_read%20spark-compliance%3Ameetings_read%20spark-admin%3Aworkspaces_read%20spark%3Adevices_read%20spark-admin%3Aresource_group_memberships_read%20spark-compliance%3Aevents_read%20spark-admin%3Aresource_group_memberships_write%20spark-compliance%3Arooms_read%20spark-admin%3Abroadworks_subscribers_read%20meeting%3Acontrols_write%20spark-admin%3Ahybrid_connectors_read%20audit%3Aevents_read%20meeting%3Aadmin_recordings_write%20spark-compliance%3Ateams_read%20spark-admin%3Aplaces_write%20spark-admin%3Alicenses_read%20spark-compliance%3Arooms_write%20spark%3Aplaces_write');
 }
 
-//Signing Up
-/*signup.addEventListener('click',()=>{
-    document.querySelector('nav').querySelector('#l22').style='display:none;';
-})*/
-/*
-if(window.location.href.indexOf("code") > -1){
-    signup.style='display:none;';
-}*/
-
-//Signing In
+//Signing In button
 signin.addEventListener('click',async()=>{
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
@@ -55,7 +48,6 @@ signin.addEventListener('click',async()=>{
         let y =await x.json();    
         let acctoken= y.access_token;
         localStorage.setItem('storedItem',acctoken);
-        console.log(acctoken);
         signin.style='display:none;';
         dashboard.style='display:block;position: absolute;right:10%;cursor:pointer;background-color: green;border:3px solid 777;border-radius: 40px;padding:20px;color:white;cursor: pointer;';
     } catch (error) {
@@ -77,8 +69,6 @@ if(localStorage.getItem('storedItem')==null&&signin.style.display=='none'){
 buildMeeting.addEventListener('click', async function() {
     if(document.querySelector('#sec1').querySelector('input').value.length!=0){
         let tok=localStorage.getItem('storedItem');
-        //localStorage.setItem('temptok',tok)
-        //localStorage.removeItem('storedItem')
         if(tok!=null){
 	    await fetch('https://webexapis.com/v1/rooms', {
 			method: 'POST',
@@ -136,22 +126,39 @@ buildMeeting.addEventListener('click', async function() {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
-//dashboard
+//going to dashboard
 dashboard.addEventListener('click',()=>{
     landingPage.style='display:none;';
-    div2.style='display:flex;justify-content: center;align-items: center;background-color:azure;height:100vh';
+    document.querySelector('#roomsec').style='display:flex;flex-wrap:wrap;justify-content:center;align-items:center;height:100vh;width:100vw;background-color:azure;';
+    let x=await fetch('https://webexapis.com/v1/rooms?sortBy=created&max=1000',{
+        method:'GET',
+        headers:{
+            'Authorization':`Bearer ${localStorage.getItem('storedItem')}`
+        }
+    })
+    let y=await x.json();
+    for(i=0;i<y.items.length;i++){
+        let z=document.createElement('div');
+        z.setAttribute(id,`roomcard${i+1}`);
+        z.innerHTML=`<span>${y.items[i].title}<br></span><span>${y.items[i].created}<br></span><span class='control'>تحكم في الغرفة</span>`
+        document.querySelector('#roomsec').appendChild(z)
+        localStorage.setItem(`roomid${i+1}`,y.items[i].id);
+    }
 })
 
+//backing to home-page
 div2.querySelector('#back').addEventListener('click',()=>{
     landingPage.style='display:block;height:100vh;width:100vw;';
     div2.style='display:none';
 })
 
+//going to messages section
 messages.addEventListener('click',()=>{
     div2.style='display:none;';
     div4.style='display:flex;height:100vh;width:100vw;justify-content:center;align-items:center;';
 })
 
+//sending message to the room
 messageSend.addEventListener('click',async()=>{
     let tok=localStorage.getItem('temptok');
     let id=localStorage.getItem('roomId');
@@ -186,12 +193,13 @@ messageSend.addEventListener('click',async()=>{
     }
 })
 
+//backing to dashboard
 div4.querySelector('#back2').addEventListener('click',()=>{
     div2.style='display:flex;justify-content: center;align-items: center;background-color:azure;height:100vh';
     div4.style='display:none';
 })
 
-//to delet las message sent
+//to delet last message sent
 div4.querySelector('#deletmessage').addEventListener('click',()=>{
     let x=localStorage.getItem('messageid');
     let tok=localStorage.getItem('temptok');
@@ -202,6 +210,30 @@ div4.querySelector('#deletmessage').addEventListener('click',()=>{
         }
     })
 })
+
+///////////////////////////////////////////////////////////
+
+//rooms
+
+/*dashboard.addEventListener('click',async()=>{
+    div2.style='display:none;';
+    document.querySelector('#roomsec').style='display:flex;flex-wrap:wrap;justify-content:center;align-items:center;height:100vh;width:100vw;background-color:azure;';
+    let x=await fetch('https://webexapis.com/v1/rooms?sortBy=created&max=1000',{
+        method:'GET',
+        headers:{
+            'Authorization':`Bearer ${localStorage.getItem('storedItem')}`
+        }
+    })
+    let y=await x.json();
+    for(i=0;i<y.items.length;i++){
+        let z=document.createElement('div');
+        z.setAttribute(id,`roomcard${i+1}`);
+        z.innerHTML=`<span>${y.items[i].title}<br></span><span>${y.items[i].created}<br></span><span class='control'>تحكم في الغرفة</span>`
+        document.querySelector('#roomsec').appendChild(z)
+        localStorage.setItem(`roomid${i+1}`,y.items[i].id);
+    }
+});*/
+
 
 
 
