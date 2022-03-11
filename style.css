@@ -244,17 +244,34 @@ nav #l22{
 
 #roomsec div{
     display:inline-block;
-    flex-basis:33%;
+    flex-basis:29%;
     width:260px;
     height:fit-content;
     font-size: 3rem;
     color:red;
     background-color:white;
+    box-shadow: 0 2px 15px rgb(0 0 0 / 10%);
+    border-radius: 20px;
+    border:4px solid #777;
+    text-align: center;
+    margin:0 20px 20px 20px;
 }
 
 @media(max-width:1400px){
     #img1{
         display:none;
+    }
+}
+
+@media(max-width:1350px){
+    #roomsec div{
+        flex-basis:44%;
+    }
+}
+
+@media(max-width:907px){
+    #roomsec div{
+        flex-basis:100%;
     }
 }
 
