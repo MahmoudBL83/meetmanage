@@ -146,7 +146,7 @@ dashboard.addEventListener('click',async()=>{
     for(i=0;i<controls.length;i++){
         controls[i].addEventListener('click',()=>{
         document.querySelector('#roomsec').style='display:none;';
-        div2.style='display:flex;justify-content: center;align-items: center;background-color:azure;height:100vh;';
+        div2.style='display:flex;justify-content: center;align-items: center;background-color:azure;height:100vh;flex-wrap:wrap;width:100%;';
         }
         )
     }
