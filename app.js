@@ -141,18 +141,21 @@ dashboard.addEventListener('click',async()=>{
         document.querySelector('#roomsec').appendChild(z)
         localStorage.setItem(`roomid${i+1}`,y.items[i].id);
     }
-    let controls=[...document.querySelectorAll('.control')];
+    let controls=document.querySelectorAll('.control');
     localStorage.setItem('controls',controls)
 })
 ///////////////////////////////////////////////////////////
 
 //control the rooms
 let controls=localStorage.getItem('controls');
+console.log(controls);
+typeof(controls);
 for(i=0;i<controls.length;i++){
     controls[i].addEventListener('click',()=>{
     document.querySelector('#roomsec').style='display:none;';
     div2.style='display:flex;justify-content: center;align-items: center;background-color:azure;height:100vh;';
-    })
+    }
+    )
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
