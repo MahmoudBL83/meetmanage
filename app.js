@@ -136,7 +136,7 @@ dashboard.addEventListener('click',async()=>{
     let y=await x.json();
     for(i=0;i<y.items.length;i++){
         let z=document.createElement('div');
-        z.setAttribute(id,`roomcard${i+1}`);
+        z.setAttribute('id',`roomcard${i+1}`);
         z.innerHTML=`<span>${y.items[i].title}<br></span><span>${y.items[i].created}<br></span><span class='control'>تحكم في الغرفة</span>`
         document.querySelector('#roomsec').appendChild(z)
         localStorage.setItem(`roomid${i+1}`,y.items[i].id);
