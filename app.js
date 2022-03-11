@@ -142,12 +142,24 @@ dashboard.addEventListener('click',async()=>{
         localStorage.setItem(`roomid${i+1}`,y.items[i].id);
     }
 })
+///////////////////////////////////////////////////////////
 
+//control the rooms
+let controls=[...document.querySelectorAll('.control')];
+for(i=0;i<controls.length;i++){
+    controls[i].addEventListener('click',()=>{
+    document.querySelector('#roomsec').style='display:none;';
+    div2.style='display:flex;justify-content: center;align-items: center;background-color:azure;height:100vh;';
+    })
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////
 //backing to home-page
-div2.querySelector('#back').addEventListener('click',()=>{
-    landingPage.style='display:block;height:100vh;width:100vw;';
+div4.querySelector('#back2').addEventListener('click',()=>{
+    document.querySelector('#roomsec').style='display:flex;flex-wrap:wrap;justify-content:center;align-items:center;height:100%;width:100%;background-color:azure;';
     div2.style='display:none';
 })
+//////////////////////////////
 
 //going to messages section
 messages.addEventListener('click',()=>{
@@ -208,9 +220,6 @@ div4.querySelector('#deletmessage').addEventListener('click',()=>{
     })
 })
 
-///////////////////////////////////////////////////////////
-
-//control the rooms
 
 
 
