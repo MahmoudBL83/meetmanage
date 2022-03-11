@@ -156,7 +156,7 @@ dashboard.addEventListener('click',async()=>{
 //control the rooms
 //////////////////////////////////////////////////////////////////////////////////////////////
 //backing to home-page
-div4.querySelector('#back2').addEventListener('click',()=>{
+div4.querySelector('#back').addEventListener('click',()=>{
     document.querySelector('#roomsec').style='display:flex;flex-wrap:wrap;justify-content:center;align-items:center;height:100%;width:100%;background-color:azure;';
     div2.style='display:none';
 })
