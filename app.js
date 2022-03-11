@@ -126,7 +126,7 @@ buildMeeting.addEventListener('click', async function() {
 //going to dashboard
 dashboard.addEventListener('click',async()=>{
     landingPage.style='display:none;';
-    document.querySelector('#roomsec').style='display:flex;flex-wrap:wrap;justify-content:center;align-items:center;height:100vh;width:100vw;background-color:azure;';
+    document.querySelector('#roomsec').style='display:flex;flex-wrap:wrap;justify-content:center;align-items:center;height:100%;width:100%;background-color:azure;';
     let x=await fetch('https://webexapis.com/v1/rooms?sortBy=created&max=1000',{
         method:'GET',
         headers:{
@@ -137,7 +137,7 @@ dashboard.addEventListener('click',async()=>{
     for(i=0;i<y.items.length;i++){
         let z=document.createElement('div');
         z.setAttribute('id',`roomcard${i+1}`);
-        z.innerHTML=`<span>${y.items[i].title}<br></span><span>${y.items[i].created}<br></span><span class='control'>تحكم في الغرفة</span>`
+        z.innerHTML=`<span>${y.items[i].title}<br></span><span>${y.items[i].created.substr(0,10)}<br></span><span class='control'>تحكم في الغرفة</span>`
         document.querySelector('#roomsec').appendChild(z)
         localStorage.setItem(`roomid${i+1}`,y.items[i].id);
     }
@@ -210,26 +210,8 @@ div4.querySelector('#deletmessage').addEventListener('click',()=>{
 
 ///////////////////////////////////////////////////////////
 
-//rooms
+//control the rooms
 
-/*dashboard.addEventListener('click',async()=>{
-    div2.style='display:none;';
-    document.querySelector('#roomsec').style='display:flex;flex-wrap:wrap;justify-content:center;align-items:center;height:100vh;width:100vw;background-color:azure;';
-    let x=await fetch('https://webexapis.com/v1/rooms?sortBy=created&max=1000',{
-        method:'GET',
-        headers:{
-            'Authorization':`Bearer ${localStorage.getItem('storedItem')}`
-        }
-    })
-    let y=await x.json();
-    for(i=0;i<y.items.length;i++){
-        let z=document.createElement('div');
-        z.setAttribute(id,`roomcard${i+1}`);
-        z.innerHTML=`<span>${y.items[i].title}<br></span><span>${y.items[i].created}<br></span><span class='control'>تحكم في الغرفة</span>`
-        document.querySelector('#roomsec').appendChild(z)
-        localStorage.setItem(`roomid${i+1}`,y.items[i].id);
-    }
-});*/
 
 
 
