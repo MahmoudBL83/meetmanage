@@ -242,7 +242,7 @@ nav #l22{
     display:none;
 }
 
-.roomcard{
+#roomsec div{
     display:inline-block;
     flex-basis:33%;
     width:260px;
