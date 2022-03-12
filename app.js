@@ -163,10 +163,16 @@ div2.querySelector('#back').addEventListener('click',()=>{
 })
 ///////////////////////////////////////////////////////////////////////////////////////
 
+/*MESSAGES SECTION*/
 //going to messages section
 messages.addEventListener('click',()=>{
     div2.style='display:none;';
-    div4.style='display:flex;height:100vh;width:100vw;justify-content:center;align-items:center;';
+    document.querySelector('#msgsec').style='display:flex;height:100%;width:100%;justify-content:center;align-items:center;background-color:azure;';
+})
+
+document.querySelector('delmsg').addEventListener('click',()=>{
+    document.querySelector('#msgsec').style='display:none;';
+    div4.style='display:flex;flex-wrap:wrap;height:100%;width:100%;background-color:azure;';
 })
 
 //sending message to the room
@@ -210,6 +216,10 @@ div4.querySelector('#deletmessage').addEventListener('click',()=>{
         }
     })
 })
+///////////////////////////////////////////
+
+/*MEETING SECTION*/
+
 
 
 
