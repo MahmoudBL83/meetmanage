@@ -147,7 +147,7 @@ dashboard.addEventListener('click',async()=>{
         controls[i].addEventListener('click',(evt)=>{
         document.querySelector('#roomsec').style='display:none;';
         div2.style='display:flex;justify-content: center;align-items: center;background-color:azure;height:100vh;flex-wrap:wrap;width:100%;';
-        let num=(evt.target.classList[0].match(/\d+/))[0];
+        let num=evt.target.classList.value;
         console.log(num);
         }
         )
