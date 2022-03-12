@@ -137,19 +137,18 @@ dashboard.addEventListener('click',async()=>{
     for(i=0;i<y.items.length;i++){
         let z=document.createElement('div');
         z.setAttribute('id',`roomcard${i+1}`);
-        z.innerHTML=`<span>${y.items[i].title}<br></span><span>${y.items[i].created.substr(0,10)}<br></span><span class=control${i+1}>تحكم في الغرفة</span>`
+        z.innerHTML=`<span>${y.items[i].title}<br></span><span>${y.items[i].created.substr(0,10)}<br></span><span class=control>تحكم في الغرفة</span>`
         document.querySelector('#roomsec').appendChild(z)
         localStorage.setItem(`roomid${i+1}`,y.items[i].id);
-        let controls=document.querySelectorAll(`.control${i+1}`);
+        let controls=document.querySelectorAll('.control');
     }
-    let controls=document.querySelectorAll(`.control${i+1}`);
     //localStorage.setItem('controls',controls)
     for(i=0;i<controls.length;i++){
-        let ids=localStorage.getItem(`roomid${i+1}`);
-        controls[i].addEventListener('click',()=>{
+        //let ids=localStorage.getItem(`roomid${i+1}`);
+        controls[i].addEventListener('click',(evt)=>{
         document.querySelector('#roomsec').style='display:none;';
         div2.style='display:flex;justify-content: center;align-items: center;background-color:azure;height:100vh;flex-wrap:wrap;width:100%;';
-        let num=controls[i].classList[0].match(/\d+/);
+        let num=evt.target.classList[0].match(/\d+/);
         console.log(num);
         }
         )
