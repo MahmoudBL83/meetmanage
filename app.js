@@ -148,7 +148,8 @@ dashboard.addEventListener('click',async()=>{
         document.querySelector('#roomsec').style='display:none;';
         div2.style='display:flex;justify-content: center;align-items: center;background-color:azure;height:100vh;flex-wrap:wrap;width:100%;';
         let num=evt.target.classList.value;
-        console.log(num);
+        let activeid=localStorage.getItem(`roomid${num}`);
+        localStorage.setItem('activeid',activeid);
         }
         )
     }
@@ -179,7 +180,7 @@ messageSend.addEventListener('click',async()=>{
             'Authorization':`Bearer ${tok}`
         },
         body:JSON.stringify({
-            'roomId':id,
+            'roomId':localStorage.getItem('activeid'),
             'text':text.value,
         })
     })
@@ -190,7 +191,7 @@ messageSend.addEventListener('click',async()=>{
             'Authorization':`Bearer ${tok}`
         },
         body:JSON.stringify({
-            'roomId':id,
+            'roomId':localStorage.getItem('activeid'),
             'text':text.value,
         })
     })
