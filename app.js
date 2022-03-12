@@ -223,7 +223,12 @@ div4.querySelector('#deletmessage').addEventListener('click',()=>{
 
 /*MEETING SECTION*/
 document.querySelector('#showmsg').addEventListener('click',async()=>{
-   let res= await fetch(`https://webexapis.com/v1/messages?roomId=${localStorage.getItem('activeid')}&max=100`);
+   let res= await fetch(`https://webexapis.com/v1/messages?roomId=${localStorage.getItem('activeid')}&max=100`,{
+       method:'GET',
+       headers:{
+           'Authorization':`Bearer ${localStorage.getItem('storedItem')}`
+       }
+   })
    let res2=await res.json();
    let res3=res2.items[0].text;
    console.log(res3);
