@@ -262,6 +262,38 @@ textarea{
     margin:0 20px 20px 20px;
 }
 
+#listmsg{
+    display:none;
+}
+
+#msgsec{
+    display:None;
+}
+
+#showmsg{
+    box-shadow: 0 2px 15px rgb(0 0 0 / 10%);
+    background-color: white;
+    color:red;
+    border-radius: 20px;
+    border:4px solid #777;
+    height: fit-content;
+    font-size: 4rem;
+    text-align: center;
+    cursor: pointer;
+}
+
+#delmsg{
+    box-shadow: 0 2px 15px rgb(0 0 0 / 10%);
+    background-color: white;
+    color:red;
+    border-radius: 20px;
+    border:4px solid #777;
+    height: fit-content;
+    font-size: 4rem;
+    text-align: center;
+    cursor: pointer;
+}
+
 @media(max-width:1400px){
     #img1{
         display:none;
