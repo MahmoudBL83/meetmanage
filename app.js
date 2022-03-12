@@ -137,30 +137,32 @@ dashboard.addEventListener('click',async()=>{
     for(i=0;i<y.items.length;i++){
         let z=document.createElement('div');
         z.setAttribute('id',`roomcard${i+1}`);
-        z.innerHTML=`<span>${y.items[i].title}<br></span><span>${y.items[i].created.substr(0,10)}<br></span><span class='control'>تحكم في الغرفة</span>`
+        z.innerHTML=`<span>${y.items[i].title}<br></span><span>${y.items[i].created.substr(0,10)}<br></span><span class=control${i+1}>تحكم في الغرفة</span>`
         document.querySelector('#roomsec').appendChild(z)
         localStorage.setItem(`roomid${i+1}`,y.items[i].id);
+        let controls=document.querySelectorAll(`.control${i+1}`);
     }
-    let controls=document.querySelectorAll('.control');
+    let controls=document.querySelectorAll(`.control${i+1}`);
     //localStorage.setItem('controls',controls)
     for(i=0;i<controls.length;i++){
+        let ids=localStorage.getItem(`roomid${i+1}`);
         controls[i].addEventListener('click',()=>{
         document.querySelector('#roomsec').style='display:none;';
         div2.style='display:flex;justify-content: center;align-items: center;background-color:azure;height:100vh;flex-wrap:wrap;width:100%;';
+        let num=controls[i].classList[0].match(/\d+/);
+        console.log(num);
         }
         )
     }
 })
-///////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////
 
-//control the rooms
-//////////////////////////////////////////////////////////////////////////////////////////////
 //backing to home-page
 div2.querySelector('#back').addEventListener('click',()=>{
     document.querySelector('#roomsec').style='display:flex;flex-wrap:wrap;justify-content:center;align-items:center;height:100%;width:100%;background-color:azure;';
     div2.style='display:none';
 })
-//////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////
 
 //going to messages section
 messages.addEventListener('click',()=>{
@@ -170,7 +172,7 @@ messages.addEventListener('click',()=>{
 
 //sending message to the room
 messageSend.addEventListener('click',async()=>{
-    let tok=localStorage.getItem('temptok');
+    let tok=localStorage.getItem('storedItem');
     let id=localStorage.getItem('roomId');
     await fetch('https://webexapis.com/v1/messages',{
         method:'POST',
