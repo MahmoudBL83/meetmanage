@@ -174,7 +174,7 @@ messages.addEventListener('click',()=>{
 //sendmessages and delet messages
 document.querySelector('#delmsg').addEventListener('click',()=>{
     document.querySelector('#msgsec').style='display:none;';
-    div4.style='display:flex;flex-wrap:wrap;height:100%;width:100%;background-color:azure;justify-content:center;align-items:center;';
+    div4.style='display:flex;flex-wrap:wrap;height:100vh;width:100%;background-color:azure;justify-content:center;align-items:center;';
 })
 
 //sending message to the room
@@ -247,7 +247,7 @@ document.querySelector('#listmsg').querySelector('.back2').addEventListener('cli
 
 document.querySelector('#roomsec').querySelector('.back2').addEventListener('click',()=>{
     document.querySelector('#roomsec').style='display:none;';
-    landingPage.style='height:100vh;width:100vw;';
+    landingPage.style='height:100vh;width:100%;';
 })
 
 
