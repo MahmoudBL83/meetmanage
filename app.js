@@ -231,9 +231,10 @@ document.querySelector('#showmsg').addEventListener('click',async()=>{
    })
    let res2=await res.json();
    document.querySelector('#listmsg').style='display:flex;flex-wrap:wrap;height:100vh;width:100%;justify-content:center;align-items:center;background-color:azure;';
-   document.querySelector('#msgsec');
+   document.querySelector('#msgsec').style='display:none;';
    for(i=0;i<res2.items.length;i++){
     let newelm=document.createElement('div');
+    newelm.style='display:block;width:260px;height:fit-content;font-size: 3rem;color:red;background-color:white;box-shadow: 0 2px 15px rgb(0 0 0 / 10%);border-radius: 20px;border:4px solid #777;text-align: center;margin:0 20px 20px 20px;';
     newelm.innerHTML=`${res2.items[i].text}`;
     document.querySelector('#listmsg').appendChild(newelm);
    }
