@@ -233,7 +233,7 @@ nav #l22{
     color:red;
     border-radius: 20px;
     border:4px solid #777;
-    height: 116px;
+    height: fit-content;
     font-size: 4rem;
     text-align: center;
     cursor: pointer;
@@ -241,6 +241,10 @@ nav #l22{
 
 #roomsec{
     display:none;
+}
+
+textarea{
+    width:100%;
 }
 
 #roomsec div{
@@ -255,7 +259,7 @@ nav #l22{
     border-radius: 20px;
     border:4px solid #777;
     text-align: center;
-    margin:20px;
+    margin:0 20px 20px 20px;
 }
 
 @media(max-width:1400px){
