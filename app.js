@@ -202,7 +202,7 @@ div4.querySelector('#back2').addEventListener('click',()=>{
 //to delet last message sent
 div4.querySelector('#deletmessage').addEventListener('click',()=>{
     let x=localStorage.getItem('messageid');
-    let tok=localStorage.getItem('temptok');
+    let tok=localStorage.getItem('storedItem');
     fetch(`https://webexapis.com/v1/messages/${x}`,{
         method:'DELETE',
         headers:{
