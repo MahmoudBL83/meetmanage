@@ -245,6 +245,11 @@ document.querySelector('#listmsg').querySelector('.back2').addEventListener('cli
     document.querySelector('msgsec').style='display: flex; height: 100vh; width: 100%; justify-content: center; align-items: center; background-color: azure; flex-wrap: wrap;';
 })
 
+document.querySelector('#roomsec').querySelector('.back2').addEventListener('click',()=>{
+    document.querySelector('#roomsec').style='display:none;';
+    landingPage.style='height:100vh;width:100vw;';
+})
+
 
 
 
