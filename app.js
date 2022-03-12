@@ -202,7 +202,7 @@ messageSend.addEventListener('click',async()=>{
 })
 
 //backing to dashboard
-div4.querySelector('#back2').addEventListener('click',()=>{
+div4.querySelector('.back2').addEventListener('click',()=>{
     //div2.style='display:flex;justify-content: center;align-items: center;background-color:azure;height:100vh';
     document.querySelector('#msgsec').style='display:flex;height:100vh;width:100%;justify-content:center;align-items:center;background-color:azure;flex-wrap:wrap;';
     div4.style='display:none';
@@ -230,7 +230,7 @@ document.querySelector('#showmsg').addEventListener('click',async()=>{
        }
    })
    let res2=await res.json();
-   document.querySelector('#listmsg').style='display:flex;flex-wrap:wrap;height:100vh;width:100%;justify-content:center;align-items:center;background-color:azure;';
+   document.querySelector('#listmsg').style='display:flex;flex-wrap:wrap;height:100%;width:100%;justify-content:center;align-content:center;background-color:azure;';
    document.querySelector('#msgsec').style='display:none;';
    for(i=0;i<res2.items.length;i++){
     let newelm=document.createElement('div');
