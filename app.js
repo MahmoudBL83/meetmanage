@@ -230,6 +230,7 @@ document.querySelector('#showmsg').addEventListener('click',async()=>{
        }
    })
    let res2=await res.json();
+   console.log(res2)
    for(i=0;i<res2.items.length;i++){
     let res3=res2.items[i].text;
    console.log(res3);
