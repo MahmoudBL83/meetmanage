@@ -222,7 +222,7 @@ div4.querySelector('#deletmessage').addEventListener('click',()=>{
 ///////////////////////////////////////////
 
 /*MEETING SECTION*/
-document.querySelector('#listmsg').addEventListener('click',async()=>{
+document.querySelector('#showmsg').addEventListener('click',async()=>{
    let res= await fetch(`https://webexapis.com/v1/messages?roomId=${localStorage.getItem('activeid')}&max=100`);
    let res2=await res.json();
    let res3=res2.items[0].text;
