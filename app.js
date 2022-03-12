@@ -230,10 +230,12 @@ document.querySelector('#showmsg').addEventListener('click',async()=>{
        }
    })
    let res2=await res.json();
-   console.log(res2)
+   document.querySelector('#listmsg').style='display:flex;flex-wrap:wrap;height:100vh;width:100%;justify-content:center;align-items:center;background-color:azure;';
+   document.querySelector('#msgsec');
    for(i=0;i<res2.items.length;i++){
-    let res3=res2.items[i].text;
-   console.log(res3);
+    let newelm=document.createElement('div');
+    newelm.innerHTML=`${res2.items[i].text}`;
+    document.querySelector('#listmsg').appendChild(newelm);
    }
 })
 
