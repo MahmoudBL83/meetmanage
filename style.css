@@ -295,3 +295,13 @@ textarea{
     }
 }
 
+@media(max-width:437px){
+    #dashboard{
+        right:50%;
+        transform: translateX(50%);
+    }
+    #logo{
+        display:none;
+    }
+}
+
