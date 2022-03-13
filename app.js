@@ -123,7 +123,7 @@ buildMeeting.addEventListener('click', async function() {
 //going to dashboard
 dashboard.addEventListener('click',async()=>{
     landingPage.style='display:none;';
-    document.querySelector('#roomsec').style='display:flex;flex-wrap:wrap;justify-content:center;align-items:center;height:100%;width:100%;background-color:#adefd1ff;';
+    document.querySelector('#roomsec').style='display:flex;flex-wrap:wrap;justify-content:center;align-items:center;height:100%;width:100%;background-color:#ececec;';
     let x=await fetch('https://webexapis.com/v1/rooms?sortBy=created&max=1000',{
         method:'GET',
         headers:{
@@ -155,7 +155,7 @@ dashboard.addEventListener('click',async()=>{
 
 //backing to home-page
 div2.querySelector('#back').addEventListener('click',()=>{
-    document.querySelector('#roomsec').style='display:flex;flex-wrap:wrap;justify-content:center;align-items:center;height:100%;width:100%;background-color:azure;';
+    document.querySelector('#roomsec').style='display:flex;flex-wrap:wrap;justify-content:center;align-items:center;height:100%;width:100%;background-color:#ececec;';
     div2.style='display:none';
 })
 ///////////////////////////////////////////////////////////////////////////////////////
