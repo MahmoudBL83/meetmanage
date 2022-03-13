@@ -29,6 +29,14 @@ nav h1{
     color:#385a64;
 }
 
+#logo{
+    display:inline-block;
+    position: absolute;
+    left:10%;
+    cursor: pointer;
+    width:100%;
+}
+
 #dashboard{
     display:none;
 }
