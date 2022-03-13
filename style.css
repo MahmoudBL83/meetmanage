@@ -1,8 +1,9 @@
 body{
     margin:0;
-    font-family: 'Cairo', sans-serif;
+    font-family: 'Dubai', BlinkMacSystemFont, 'Segoe UI','Cairo', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
     overflow-y: scroll;
     overflow-x: hidden;
+    transition:0.6s;
 }
 
 #homePage{
