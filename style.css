@@ -83,6 +83,11 @@ nav h1{
     width:50%;
 }
 
+#meetlink{
+    display:none;
+}
+
+
 #landingPage span{
     display: block;
     margin: 0 auto 0 auto;
