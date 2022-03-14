@@ -297,8 +297,9 @@ textarea{
 
 @media(max-width:437px){
     #dashboard{
-        right:50%;
+        right: 50%!important;
         transform: translateX(50%);
+        width:115px;
     }
     #logo{
         display:none;
