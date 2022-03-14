@@ -118,6 +118,10 @@ buildMeeting.addEventListener('click', async function() {
         }
 })
 
+if(meetlink.innerHTML==''){
+    meetlink.style='display:none;'
+}
+
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
 //going to dashboard
@@ -143,7 +147,7 @@ dashboard.addEventListener('click',async()=>{
         //let ids=localStorage.getItem(`roomid${i+1}`);
         controls[i].addEventListener('click',(evt)=>{
         document.querySelector('#roomsec').style='display:none;';
-        div2.style='display:flex;justify-content: center;align-content: center;background-color:azure;height:100vh;flex-wrap:wrap;width:100%;';
+        div2.style='display:flex;justify-content: center;align-content: center;background-color:#ececec;height:100vh;flex-wrap:wrap;width:100%;';
         let num=evt.target.classList.value;
         let activeid=localStorage.getItem(`roomid${num}`);
         localStorage.setItem('activeid',activeid);
