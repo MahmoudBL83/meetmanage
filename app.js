@@ -118,12 +118,10 @@ buildMeeting.addEventListener('click', async function() {
         }
 })
 
-if(meetlink.innerHTML==''){
-    meetlink.style='display:none;'
+if(meetlink.innerHTML!=''){
+    meetlink.style='display: block!important;margin: 0 auto 0 auto;color: #ff735c;background-color: white;border: 4px solid #385a64;border-radius: 40px;box-shadow: 0 2px 15px rgb(0 0 0 / 10%);cursor: pointer;margin: 15px 0 10px 0;padding: 10px;'
 }
-else{
-    meetlink.style='display: block!important;margin: 0 auto 0 auto;color: #ff735c;background-color: white;border: 4px solid #385a64;border-radius: 40px;box-shadow: 0 2px 15px rgb(0 0 0 / 10%);cursor: pointer;margin: 15px 0 10px 0;padding: 10px;';
-}
+
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
