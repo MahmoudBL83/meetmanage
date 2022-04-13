@@ -171,6 +171,7 @@ dashboard.addEventListener('click',async()=>{
             "refresh_token":`${localStorage.getItem('reftok')}`
         })
 })
+		x.json();
 		console.log(x);
 	}
 })
