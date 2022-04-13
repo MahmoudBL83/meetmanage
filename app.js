@@ -44,7 +44,7 @@ signin.addEventListener('click',async()=>{
         let y =await x.json();    
         let acctoken= y.access_token;
         localStorage.setItem('storedItem',acctoken);
-	localStorage.setItem('reftok',y.refresh_token)
+	    localStorage.setItem('reftok',y.refresh_token)
         signin.style='display:none;';
         dashboard.style='display:block;position: absolute;right:10%;cursor:pointer;background-color: #385a64;border:3px solid 777;border-radius: 40px;padding:20px;color:white;cursor: pointer;';
     } catch (error) {
@@ -52,10 +52,10 @@ signin.addEventListener('click',async()=>{
     }
 })
 
-if(localStorage.getItem('storedItem')!=null){
+/*if(localStorage.getItem('storedItem')!=null){
     signin.style='display:none;'
     dashboard.style='display:block;position: absolute;right:10%;cursor:pointer;background-color: #385a64;border:3px solid 777;border-radius: 40px;padding:20px;color:white;cursor: pointer;';
-}
+}*/
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
 //when build a new meeting
@@ -270,11 +270,3 @@ document.querySelector('#roomsec').querySelector('.back2').addEventListener('cli
     document.querySelector('#roomsec').style='display:none;';
     landingPage.style='height:100vh;width:100vw;';
 })
-
-
-
-
-
-
-
-
