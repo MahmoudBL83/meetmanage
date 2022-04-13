@@ -98,8 +98,12 @@ buildMeeting.addEventListener('click', async function() {
                     'Authorization': `Bearer ${tok}`
                 }})
                 try {
-                    let z=await y.json()
+                    let z=await y.json();
                     meetlink.innerHTML=`<a href='${z.meetingLink}'>انسخ الرابط</a>`;
+                    if(meetlink.innerHTML!=''){
+                        meetlink.removeAttribute("id");
+                        meetlink.style='display: block!important;margin: 0 auto 0 auto;color: #ff735c;background-color: white;border: 4px solid #385a64;border-radius: 40px;box-shadow: 0 2px 15px rgb(0 0 0 / 10%);cursor: pointer;margin: 15px 0 10px 0;padding: 10px;'
+                    }
                 } catch (error) {
                     console.log(error);
                 }
@@ -117,13 +121,6 @@ buildMeeting.addEventListener('click', async function() {
             setTimeout(()=> {document.querySelector('#landingPage').querySelector('input').style='border-radius:40px;border:4px solid #777;height:90px;box-shadow: 0 2px 15px rgb(0 0 0 / 10%);width:97%;'},200)
         }
 })
-
-if(meetlink.innerHTML!=''){
-    meetlink.removeAttribute("id");
-    meetlink.style='display: block!important;margin: 0 auto 0 auto;color: #ff735c;background-color: white;border: 4px solid #385a64;border-radius: 40px;box-shadow: 0 2px 15px rgb(0 0 0 / 10%);cursor: pointer;margin: 15px 0 10px 0;padding: 10px;'
-}
-
-
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
 //going to dashboard
