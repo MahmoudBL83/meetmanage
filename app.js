@@ -163,7 +163,7 @@ dashboard.addEventListener('click',async()=>{
             let res=await fetch(`https://webexapis.com/v1/rooms/${activeid}/meetinginfo`,{method:'GET',
             headers:{
                  'Content-Type':'application/json',
-                 'Accept': 'application/json'
+                 'Authorization':`Bearer ${localStorage.getItem('storedItem')}`
             }})
             res.json();
             let link=res.meetingLink;
