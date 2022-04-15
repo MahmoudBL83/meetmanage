@@ -165,8 +165,9 @@ dashboard.addEventListener('click',async()=>{
                  'Content-Type':'application/json',
                  'Authorization':`Bearer ${localStorage.getItem('storedItem')}`
             }})
-            res.json();
-            let link=res.meetingLink;
+            let u=res.json();
+            let link=u.meetingLink;
+            console.log(link)
             location.replace(link);
         })
     }
