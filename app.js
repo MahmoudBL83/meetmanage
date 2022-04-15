@@ -160,15 +160,18 @@ dashboard.addEventListener('click',async()=>{
         joinings[i].addEventListener('click',async(evt)=>{
             let num=evt.target.classList.value;
             let activeid=localStorage.getItem(`roomid${num}`);
-            console.log(activeid)
             let res=await fetch(`https://webexapis.com/v1/rooms/${activeid}/meetingInfo`,{method:'GET',
             headers:{
+                 'Content-Type': 'application/json',
                  'Authorization':`Bearer ${localStorage.getItem('storedItem')}`
             }})
-            let u=res.json();
-            let link=u.meetingLink;
-            console.log(link)
-            location.replace(link);
+            try {
+                let u=res.json();
+                let link=u.meetingLink;
+                location.replace(link);
+            } catch (error) {
+                console.log(error);
+            }
         })
     }
 }
