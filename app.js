@@ -163,7 +163,6 @@ dashboard.addEventListener('click',async()=>{
             console.log(activeid)
             let res=await fetch(`https://webexapis.com/v1/rooms/${activeid}/meetingInfo`,{method:'GET',
             headers:{
-                 'Content-Type':'application/json',
                  'Authorization':`Bearer ${localStorage.getItem('storedItem')}`
             }})
             let u=res.json();
