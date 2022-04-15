@@ -138,11 +138,12 @@ dashboard.addEventListener('click',async()=>{
     for(i=0;i<y.items.length;i++){
         let z=document.createElement('div');
         z.setAttribute('id',`roomcard${i+1}`);
-        z.innerHTML=`<span>${y.items[i].title}<br></span><span>${y.items[i].created.substr(0,10)}<br></span><article class=${i+1}>تحكم في الغرفة</article>`
+        z.innerHTML=`<span>${y.items[i].title}<br></span><span>${y.items[i].created.substr(0,10)}<br></span><article class=${i+1}>تحكم في الغرفة<br></article><footer class=${i+1}>انضم الي الفيديو</footer>`
         document.querySelector('#roomsec').appendChild(z)
         localStorage.setItem(`roomid${i+1}`,y.items[i].id);
     }
     let controls=document.querySelector('#roomsec').querySelectorAll('article');
+    let joinings=document.querySelector('#roomsec').querySelectorAll('footer');
     for(i=0;i<controls.length;i++){
         //let ids=localStorage.getItem(`roomid${i+1}`);
         controls[i].addEventListener('click',(evt)=>{
@@ -153,7 +154,19 @@ dashboard.addEventListener('click',async()=>{
         localStorage.setItem('activeid',activeid);
         }
         )
-    }}
+    }
+    //joining the meeting
+    for(i=0;i<y.items.length;i++){
+        joinings[i].addEventListener('click',(evt)=>{
+            let num=evt.target.classList.value;
+            let activeid=localStorage.getItem(`roomid${num}`);
+            let res=await fetch(`https://webexapis.com/v1/rooms/${activeid}/meetinginfo`)
+            res.json();
+            let link=res.meetingLink;
+            location.replace(meetingLink);
+        })
+    }
+}
 	catch(err){
 		let x=await fetch('https://webexapis.com/v1/access_token',{
 	method:'POST',
@@ -267,3 +280,5 @@ document.querySelector('#roomsec').querySelector('.back2').addEventListener('cli
     document.querySelector('#roomsec').style='display:none;';
     landingPage.style='height:100vh;width:100vw;';
 })
+
+///////////////////////////////////////////////////////////////////////////////////
