@@ -159,23 +159,23 @@ dashboard.addEventListener('click',async()=>{
     for(i=0;i<joinings.length;i++){
         joinings[i].addEventListener('click',async(evt)=>{
             let num=evt.target.classList.value;
-            let activeid=localStorage.getItem(`roomid${num}`);
-            let res=await fetch(`https://webexapis.com/v1/rooms/${activeid}/meetingInfo`,{method:'GET',
-            headers:{
+            let id=localStorage.getItem(`roomid${num}`);
+            let res=await fetch(`https://webexapis.com/v1/rooms/${id}/meetingInfo`,{
+                method:'GET',
+                headers:{
                  'Content-Type': 'application/json',
                  'Authorization':`Bearer ${localStorage.getItem('storedItem')}`
-            }})
-            try {
-                let u=res.json();
-                let link=u.meetingLink;
-                console.log(link);
-                location.replace(link);
-            } catch (error) {
-                console.log(error);
-            }
-        })
+                }})
+                try {
+                    let u=res.json();
+                    let link=u.meetingLink;
+                    console.log(link);
+                } catch (error) {
+                    console.log(error);
+                }
+            })
+        }
     }
-}
 	catch(err){
 		let x=await fetch('https://webexapis.com/v1/access_token',{
 	method:'POST',
