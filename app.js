@@ -168,6 +168,7 @@ dashboard.addEventListener('click',async()=>{
             try {
                 let u=res.json();
                 let link=u.meetingLink;
+                console.log(link);
                 location.replace(link);
             } catch (error) {
                 console.log(error);
