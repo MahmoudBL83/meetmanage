@@ -156,7 +156,7 @@ dashboard.addEventListener('click',async()=>{
         )
     }
     //joining the meeting
-    for(i=0;i<y.items.length;i++){
+    for(i=0;i<joinings.length;i++){
         joinings[i].addEventListener('click',async(evt)=>{
             let num=evt.target.classList.value;
             let activeid=localStorage.getItem(`roomid${num}`);
