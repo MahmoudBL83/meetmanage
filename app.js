@@ -167,7 +167,7 @@ dashboard.addEventListener('click',async()=>{
             }})
             res.json();
             let link=res.meetingLink;
-            location.replace(meetingLink);
+            location.replace(link);
         })
     }
 }
