@@ -157,7 +157,7 @@ dashboard.addEventListener('click',async()=>{
     }
     //joining the meeting
     for(i=0;i<y.items.length;i++){
-        joinings[i].addEventListener('click',(evt)=>{
+        joinings[i].addEventListener('click',async(evt)=>{
             let num=evt.target.classList.value;
             let activeid=localStorage.getItem(`roomid${num}`);
             let res=await fetch(`https://webexapis.com/v1/rooms/${activeid}/meetinginfo`)
