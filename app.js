@@ -138,7 +138,7 @@ dashboard.addEventListener('click',async()=>{
     for(i=0;i<y.items.length;i++){
         let z=document.createElement('div');
         z.setAttribute('id',`roomcard${i+1}`);
-        z.innerHTML=`<span>${y.items[i].title}<br></span><span>${y.items[i].created.substr(0,10)}<br></span><article class=${i+1}>تحكم في الغرفة<br></article><footer class=${i+1}><br>انضم الي الفيديو</footer><aside class=${i+1}>حذف</aside>`
+        z.innerHTML=`<span>${y.items[i].title}<br></span><span>${y.items[i].created.substr(0,10)}<br></span><article class=${i+1}>تحكم في الغرفة<br></article><footer class=${i+1}>انضم الي الفيديو</footer><aside class=${i+1}>حذف</aside>`
         document.querySelector('#roomsec').appendChild(z)
         localStorage.setItem(`roomid${i+1}`,y.items[i].id);
     }
