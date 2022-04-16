@@ -138,12 +138,13 @@ dashboard.addEventListener('click',async()=>{
     for(i=0;i<y.items.length;i++){
         let z=document.createElement('div');
         z.setAttribute('id',`roomcard${i+1}`);
-        z.innerHTML=`<span>${y.items[i].title}<br></span><span>${y.items[i].created.substr(0,10)}<br></span><article class=${i+1}>تحكم في الغرفة<br></article><footer class=${i+1}>انضم الي الفيديو</footer>`
+        z.innerHTML=`<span>${y.items[i].title}<br></span><span>${y.items[i].created.substr(0,10)}<br></span><article class=${i+1}>تحكم في الغرفة<br></article><footer class=${i+1}><br>انضم الي الفيديو</footer><aside class=${i+1}>حذف</aside>`
         document.querySelector('#roomsec').appendChild(z)
         localStorage.setItem(`roomid${i+1}`,y.items[i].id);
     }
     let controls=document.querySelector('#roomsec').querySelectorAll('article');
     let joinings=document.querySelector('#roomsec').querySelectorAll('footer');
+    let deletings=document.querySelector('#roomsec').querySelectorAll('aside');
     for(i=0;i<controls.length;i++){
         //let ids=localStorage.getItem(`roomid${i+1}`);
         controls[i].addEventListener('click',(evt)=>{
@@ -175,6 +176,23 @@ dashboard.addEventListener('click',async()=>{
                 }
             })
         }
+    //deleting the room
+    for(i=0;i<deletings.length;i++){
+        deletings[i].addEventListener('click',async(evt)=>{
+            let num=evt.target.classList.value;
+            let id=localStorage.getItem(`roomid${num}`);
+            let x=alert('هل انت متأكد انك تريد حذف الغرفة');
+            if(x==true){
+                let res=await fetch(`https://webexapis.com/v1/rooms/${id}`,{
+                method:'DELETE',
+                headers:{
+                 'Content-Type': 'application/json',
+                 'Authorization':`Bearer ${localStorage.getItem('storedItem')}`
+                }
+            })
+            }
+        })
+    }
     }
 	catch(err){
 		let x=await fetch('https://webexapis.com/v1/access_token',{
