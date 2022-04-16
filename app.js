@@ -183,7 +183,7 @@ dashboard.addEventListener('click',async()=>{
             let id=localStorage.getItem(`roomid${num}`);
             let x=alert('هل انت متأكد انك تريد حذف الغرفة');
             if(x==true){
-                let res=await fetch(`https://webexapis.com/v1/rooms/${id}`,{
+                await fetch(`https://webexapis.com/v1/rooms/${id}`,{
                 method:'DELETE',
                 headers:{
                  'Content-Type': 'application/json',
