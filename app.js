@@ -181,7 +181,7 @@ dashboard.addEventListener('click',async()=>{
         deletings[i].addEventListener('click',async(evt)=>{
             let num=evt.target.classList.value;
             let id=localStorage.getItem(`roomid${num}`);
-            let x=alert('هل انت متأكد انك تريد حذف الغرفة');
+            let x=confirm('هل انت متأكد انك تريد حذف الغرفة');
             if(x==true){
                 await fetch(`https://webexapis.com/v1/rooms/${id}`,{
                 method:'DELETE',
