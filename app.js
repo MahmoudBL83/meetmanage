@@ -328,6 +328,8 @@ document.querySelector('#memberships').addEventListener('click',async()=>{
         }
     })
     await memberslist.json();
+    console.log(memberslist.items);
+    typeof memberslist.itmes;
     for(i=0;i<memberslist.items.length;i++){
         let member=document.createElement('div')
         member.setAttribute('id',`member${i+1}`);
