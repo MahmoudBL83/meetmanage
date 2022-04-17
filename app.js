@@ -333,10 +333,10 @@ document.querySelector('#memberships').addEventListener('click',async()=>{
         member.setAttribute('id',`member${i+1}`);
         member.classList.add('membercard');
         if(y.items[i].isModerator==true){
-            member.innerHTML=`<span>${y.items[i].personEmail}</span><span>${y.items[i].personDisplayName}</span><span>مدير</span><label class="switch"><input type="checkbox" checked><span class="slider round"></span></label>`;
+            member.innerHTML=`<span>${y.items[i].personEmail}</span><span>${y.items[i].personDisplayName}</span><span style='display:inline-block!important;'>عضو</span><label class="switch"><input type="checkbox" checked><span class="slider round"></span></label><span style='display:inline-block!important;'>مدير</span>`;
         }
         else{
-            member.innerHTML=`<span>${y.items[i].personEmail}</span><span>${y.items[i].personDisplayName}</span><span>عضو</span><label class="switch"><input type="checkbox" checked><span class="slider round"></span></label>`;
+            member.innerHTML=`<span>${y.items[i].personEmail}</span><span>${y.items[i].personDisplayName}</span><span style='display:inline-block!important;'>مدير</span><label class="switch"><input type="checkbox" checked><span class="slider round"></span></label><span style='display:inline-block!important;'>عضو</span>`;
         }
         document.querySelector('#membershipsec').appendChild(member);
     }
