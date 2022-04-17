@@ -287,10 +287,14 @@ textarea{
     display:none;
 }
 
+#membershipsec span{
+    display:inline-block;
+}
+
 .membercard{
     display: inline-block;
     flex-basis: 29%;
-    width: 260px;
+    width: fit-content;
     height: fit-content;
     font-size: 3rem;
     color: white;
