@@ -52,7 +52,7 @@ signin.addEventListener('click',async()=>{
     }
 })
 
-if(localStorage.getItem('storedItem')!='undefined'&&localStorage.getItem('reftok')!='undefined'){
+if(localStorage.getItem('storedItem')!=''&&localStorage.getItem('reftok')!=''){
     signin.style='display:none;'
     dashboard.style='display:block;position: absolute;right:10%;cursor:pointer;background-color: #385a64;border:3px solid 777;border-radius: 40px;padding:20px;color:white;cursor: pointer;';
 }
