@@ -69,6 +69,7 @@ nav h1{
     font-size:3rem;
     line-height: 1.3;
     color:#385a64;
+    margin-bottom: 0;
 }
 
 #landingPage img{
@@ -280,6 +281,10 @@ textarea{
     font-size: 4rem;
     text-align: center;
     cursor: pointer;
+}
+
+#meetsec{
+    display:none;
 }
 
 @media(max-width:1400px){
