@@ -333,10 +333,10 @@ document.querySelector('#memberships').addEventListener('click',async()=>{
         member.setAttribute('id',`member${i+1}`);
         member.classList.add('membercard');
         if(y.items[i].isModerator==true){
-            member.innerHTML=`<span>${memberslist.items[i].personEmail}</span><span>${memberslist.items[i].personDisplayName}</span><span>مدير</span>`;
+            member.innerHTML=`<span>${y.items[i].personEmail}</span><span>${y.items[i].personDisplayName}</span><span>مدير</span>`;
         }
         else{
-            member.innerHTML=`<span>${memberslist.items[i].personEmail}</span><span>${memberslist.items[i].personDisplayName}</span><span>عضو</span>`;
+            member.innerHTML=`<span>${y.items[i].personEmail}</span><span>${y.items[i].personDisplayName}</span><span>عضو</span>`;
         }
         document.querySelector('#membershipsec').appendChild(member);
     }
