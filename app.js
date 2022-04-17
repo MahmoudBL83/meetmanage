@@ -329,17 +329,41 @@ document.querySelector('#memberships').addEventListener('click',async()=>{
     })
     let y=await res.json();
     for(i=0;i<y.items.length;i++){
-        let member=document.createElement('div')
+        let member=document.createElement('div');
         member.setAttribute('id',`member${i+1}`);
         member.classList.add('membercard');
         if(y.items[i].isModerator==true){
-            member.innerHTML=`<span>${y.items[i].personEmail}</span><span>${y.items[i].personDisplayName}</span><span style='display:inline-block!important;margin-right: 7px;'>عضو</span><label class="switch"><input type="checkbox" checked><span class="slider round"></span></label><span style='display:inline-block!important;margin-left: 70px;'>مدير</span>`;
+            member.innerHTML=`<span>${y.items[i].personEmail}</span><span>${y.items[i].personDisplayName}</span><span style='display:inline-block!important;margin-right: 7px;'>عضو</span><label id=${i+1} class="switch"><input type="checkbox" checked><span class="slider round"></span></label><span style='display:inline-block!important;margin-left: 70px;'>مدير</span>`;
         }
         else{
-            member.innerHTML=`<span>${y.items[i].personEmail}</span><span>${y.items[i].personDisplayName}</span><span style='display:inline-block!important;margin-right: 7px;'>مدير</span><label class="switch"><input type="checkbox" checked><span class="slider round"></span></label><span style='display:inline-block!important;margin-left: 70px;'>عضو</span>`;
+            member.innerHTML=`<span>${y.items[i].personEmail}</span><span>${y.items[i].personDisplayName}</span><span style='display:inline-block!important;margin-right: 7px;'>مدير</span><label id=${i+1} class="switch"><input type="checkbox" checked><span class="slider round"></span></label><span style='display:inline-block!important;margin-left: 70px;'>عضو</span>`;
         }
         document.querySelector('#membershipsec').appendChild(member);
+        sessionStorage.setItem(`membersids${i+1}`,y.items[i].id)
+        sessionStorage.setItem(`booleans${i+1}`,y.items[i].isModerator)
     }
 })
 
+let members=document.querySelectorAll('.membercard');
+    for(i=0;i<members.length;i++){
+        members[i].querySelector('.switch').addEventListener('click',async(evt)=>{
+            let num=evt.target.id;
+            let activememberid=sessionStorage.getItem(`membersids${num}`)
+            let res=await fetch(`https://webexapis.com/v1/memberships/${activememberid}`,{
+            method: 'PUT',
+			headers: {
+				'Content-Type': 'application/json',
+				'Authorization': `Bearer ${sessionStorage.getItem('storedItem')}`
+			},
+            body:JSON.stringify({
+                'isModerator':!sessionStorage.getItem(`booleans${num}`),
+            })
+            })
+            try {
+                sessionStorage[`booleans${i+1}`]=!sessionStorage[`booleans${i+1}`];
+            } catch (error) {
+                console.log(error);
+            }
+        })
+    }
 
