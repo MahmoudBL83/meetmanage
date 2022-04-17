@@ -332,7 +332,7 @@ document.querySelector('#memberships').addEventListener('click',async()=>{
         let member=document.createElement('div')
         member.setAttribute('id',`member${i+1}`);
         member.classList.add('membercard');
-        if(memberslist.items[i].isModerator==true){
+        if(y.items[i].isModerator==true){
             member.innerHTML=`<span>${memberslist.items[i].personEmail}</span><span>${memberslist.items[i].personDisplayName}</span><span>مدير</span>`;
         }
         else{
