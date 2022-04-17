@@ -346,10 +346,10 @@ document.querySelector('#memberships').addEventListener('click',async()=>{
 
 let members=document.querySelectorAll('.membercard');
     for(i=0;i<members.length;i++){
-        members[i].querySelector('.switch').addEventListener('click',async(evt)=>{
+        members[i].querySelector('label').addEventListener('click',async(evt)=>{
             let num=evt.target.id;
             let activememberid=sessionStorage.getItem(`membersids${num}`)
-            let res=await fetch(`https://webexapis.com/v1/memberships/${activememberid}`,{
+            await fetch(`https://webexapis.com/v1/memberships/${activememberid}`,{
             method: 'PUT',
 			headers: {
 				'Content-Type': 'application/json',
