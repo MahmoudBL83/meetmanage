@@ -215,6 +215,16 @@ dashboard.addEventListener('click',async()=>{
 ///////////////////////////////////////////////////////////////////////////////////////
 
 //backing to home-page
+document.querySelector('#roomsec').querySelector('.back2').addEventListener('click',()=>{
+    let x= document.querySelector('#roomsec').querySelectorAll('div');
+    for(i=1;i<x.length;i++){
+        x[i].remove()
+    }
+    document.querySelector('#roomsec').style='display:none;';
+    landingPage.style='height:100vh;width:100vw;';
+})
+
+//backing to dashboard
 div2.querySelector('#back').addEventListener('click',()=>{
     document.querySelector('#roomsec').style='display:flex;flex-wrap:wrap;justify-content:center;align-items:center;height:100%;width:100%;background-color:#ececec;';
     div2.style='display:none';
@@ -277,7 +287,7 @@ div4.querySelector('#deletmessage').addEventListener('click',()=>{
         }
     })
 })
-///////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////
 
 /*MEETING SECTION*/
 document.querySelector('#showmsg').addEventListener('click',async()=>{
@@ -303,13 +313,33 @@ document.querySelector('#listmsg').querySelector('.back2').addEventListener('cli
     document.querySelector('#msgsec').style='display: flex; height: 100vh; width: 100%; justify-content: center; align-items: center; background-color: azure; flex-wrap: wrap;';
 })
 
-document.querySelector('#roomsec').querySelector('.back2').addEventListener('click',()=>{
-    let x= document.querySelector('#roomsec').querySelectorAll('div');
-    for(i=1;i<x.length;i++){
-        x[i].remove()
+///////////////////////////////////////////////////////////////////////////////////
+
+//memberships section
+
+document.querySelector('#memberships').addEventListener('click',()=>{
+    let roomid=sessionStorage.getItem('activeid');
+    div2.style='display:none;'
+    document.querySelector('#membershipsec').style='display: flex; flex-wrap: wrap; justify-content: center; align-items: center; height: 100%; width: 100%; background-color: rgb(236, 236, 236);'
+    let memberslist=await fetch(`https://webexapis.com/v1/memberships?roomId=${roomid}`,{
+        method:'GET',
+        headers:{
+            'Authorization':`Bearer ${sessionStorage.getItem('storedItem')}`
+        }
+    })
+    await memberslist.json();
+    for(i=0;i<memberslist.items.length;i++){
+        let member=document.createElement('div')
+        member.setAttribute('id',`member${i+1}`);
+        member.classList.add('membercard');
+        if(memberslist.items[i].isModerator==true){
+            member.innerHTML=`<span>${memberslist.items[i].personEmail}</span><span>${memberslist.items[i].personDisplayName}</span><span>مدير</span>`;
+        }
+        else{
+            member.innerHTML=`<span>${memberslist.items[i].personEmail}</span><span>${memberslist.items[i].personDisplayName}</span><span>عضو</span>`;
+        }
+        document.querySelector('#membershipsec').appendChild(member);
     }
-    document.querySelector('#roomsec').style='display:none;';
-    landingPage.style='height:100vh;width:100vw;';
 })
 
-///////////////////////////////////////////////////////////////////////////////////
+
