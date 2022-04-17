@@ -317,7 +317,7 @@ document.querySelector('#listmsg').querySelector('.back2').addEventListener('cli
 
 //memberships section
 
-document.querySelector('#memberships').addEventListener('click',()=>{
+document.querySelector('#memberships').addEventListener('click',async()=>{
     let roomid=sessionStorage.getItem('activeid');
     div2.style='display:none;'
     document.querySelector('#membershipsec').style='display: flex; flex-wrap: wrap; justify-content: center; align-items: center; height: 100%; width: 100%; background-color: rgb(236, 236, 236);'
