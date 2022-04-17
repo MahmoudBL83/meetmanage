@@ -43,8 +43,8 @@ signin.addEventListener('click',async()=>{
     try {
         let y =await x.json();    
         let acctoken= y.access_token;
-        localStorage.setItem('storedItem',acctoken);
-	    localStorage.setItem('reftok',y.refresh_token)
+        sessionStorage.setItem('storedItem',acctoken);
+	    sessionStorage.setItem('reftok',y.refresh_token)
         signin.style='display:none;';
         dashboard.style='display:block;position: absolute;right:10%;cursor:pointer;background-color: #385a64;border:3px solid 777;border-radius: 40px;padding:20px;color:white;cursor: pointer;';
     } catch (error) {
@@ -52,7 +52,7 @@ signin.addEventListener('click',async()=>{
     }
 })
 
-if(localStorage.getItem('storedItem')!=null&&localStorage.getItem('reftok')!=null){
+if(sessionStorage.getItem('storedItem')!=null&&sessionStorage.getItem('reftok')!=null){
     signin.style='display:none;'
     dashboard.style='display:block;position: absolute;right:10%;cursor:pointer;background-color: #385a64;border:3px solid 777;border-radius: 40px;padding:20px;color:white;cursor: pointer;';
 }
@@ -61,7 +61,7 @@ if(localStorage.getItem('storedItem')!=null&&localStorage.getItem('reftok')!=nul
 //when build a new meeting
 buildMeeting.addEventListener('click', async function() {
     if(document.querySelector('#landingPage').querySelector('input').value.length!=0){
-        let tok=localStorage.getItem('storedItem');
+        let tok=sessionStorage.getItem('storedItem');
         if(tok!=null){
 	    await fetch('https://webexapis.com/v1/rooms', {
 			method: 'POST',
@@ -84,7 +84,7 @@ buildMeeting.addEventListener('click', async function() {
                 }})
                 try {
                     let res2=await x.json();
-                    localStorage.setItem('roomId',res2.items[0].id)
+                    sessionStorage.setItem('roomId',res2.items[0].id)
                     return res2.items[0].id;
                 } catch (error) {
                     console.log(error);
@@ -130,7 +130,7 @@ dashboard.addEventListener('click',async()=>{
     let x=await fetch('https://webexapis.com/v1/rooms?sortBy=created&max=1000',{
         method:'GET',
         headers:{
-            'Authorization':`Bearer ${localStorage.getItem('storedItem')}`
+            'Authorization':`Bearer ${sessionStorage.getItem('storedItem')}`
         }
     })
     try{
@@ -140,19 +140,19 @@ dashboard.addEventListener('click',async()=>{
         z.setAttribute('id',`roomcard${i+1}`);
         z.innerHTML=`<span>${y.items[i].title}<br></span><span>${y.items[i].created.substr(0,10)}<br></span><article class=${i+1}>تحكم في الغرفة<br></article><footer class=${i+1}>انضم الي الفيديو</footer><aside class=${i+1}>حذف</aside>`
         document.querySelector('#roomsec').appendChild(z)
-        localStorage.setItem(`roomid${i+1}`,y.items[i].id);
+        sessionStorage.setItem(`roomid${i+1}`,y.items[i].id);
     }
     let controls=document.querySelector('#roomsec').querySelectorAll('article');
     let joinings=document.querySelector('#roomsec').querySelectorAll('footer');
     let deletings=document.querySelector('#roomsec').querySelectorAll('aside');
     for(i=0;i<controls.length;i++){
-        //let ids=localStorage.getItem(`roomid${i+1}`);
+        //let ids=sessionStorage.getItem(`roomid${i+1}`);
         controls[i].addEventListener('click',(evt)=>{
         document.querySelector('#roomsec').style='display:none;';
         div2.style='display:flex;justify-content: center;align-content: center;background-color:#ececec;height:100vh;flex-wrap:wrap;width:100%;';
         let num=evt.target.classList.value;
-        let activeid=localStorage.getItem(`roomid${num}`);
-        localStorage.setItem('activeid',activeid);
+        let activeid=sessionStorage.getItem(`roomid${num}`);
+        sessionStorage.setItem('activeid',activeid);
         }
         )
     }
@@ -160,12 +160,12 @@ dashboard.addEventListener('click',async()=>{
     for(i=0;i<joinings.length;i++){
         joinings[i].addEventListener('click',async(evt)=>{
             let num=evt.target.classList.value;
-            let id=localStorage.getItem(`roomid${num}`);
+            let id=sessionStorage.getItem(`roomid${num}`);
             let res=await fetch(`https://webexapis.com/v1/rooms/${id}/meetingInfo`,{
                 method:'GET',
                 headers:{
                  'Content-Type': 'application/json',
-                 'Authorization':`Bearer ${localStorage.getItem('storedItem')}`
+                 'Authorization':`Bearer ${sessionStorage.getItem('storedItem')}`
                 }})
                 try {
                     let u= await res.json();
@@ -180,14 +180,14 @@ dashboard.addEventListener('click',async()=>{
     for(i=0;i<deletings.length;i++){
         deletings[i].addEventListener('click',async(evt)=>{
             let num=evt.target.classList.value;
-            let id=localStorage.getItem(`roomid${num}`);
+            let id=sessionStorage.getItem(`roomid${num}`);
             let x=confirm('هل انت متأكد انك تريد حذف الغرفة');
             if(x==true){
                 await fetch(`https://webexapis.com/v1/rooms/${id}`,{
                 method:'DELETE',
                 headers:{
                  'Content-Type': 'application/json',
-                 'Authorization':`Bearer ${localStorage.getItem('storedItem')}`
+                 'Authorization':`Bearer ${sessionStorage.getItem('storedItem')}`
                 }
             })
             }
@@ -205,7 +205,7 @@ dashboard.addEventListener('click',async()=>{
             "grant_type":"refresh_token",
             "client_id":"C69b4c0c54e1b11d9e09486823ea8cd102bf8783dd1e05b57b7da182ef955d91a",
             "client_secret":"5ae102737a6d367cbc6eb40696c2c12b2d078eee328a0ba7046f9deab2474be6",
-            "refresh_token":`${localStorage.getItem('reftok')}`
+            "refresh_token":`${sessionStorage.getItem('reftok')}`
         })
 })
 		x.json();
@@ -237,8 +237,8 @@ document.querySelector('#delmsg').addEventListener('click',()=>{
 
 //sending message to the room
 messageSend.addEventListener('click',async()=>{
-    let tok=localStorage.getItem('storedItem');
-    let id=localStorage.getItem('roomId');
+    let tok=sessionStorage.getItem('storedItem');
+    let id=sessionStorage.getItem('roomId');
     let res=await fetch('https://webexapis.com/v1/messages',{
         method:'POST',
         headers:{
@@ -246,13 +246,13 @@ messageSend.addEventListener('click',async()=>{
             'Authorization':`Bearer ${tok}`
         },
         body:JSON.stringify({
-            'roomId':localStorage.getItem('activeid'),
+            'roomId':sessionStorage.getItem('activeid'),
             'text':text.value,
         })
     })
     try{
         let u=await res.json();
-        localStorage.setItem('messageid',u.id)
+        sessionStorage.setItem('messageid',u.id)
     }
     catch(err){
         console.log(err);
@@ -268,8 +268,8 @@ div4.querySelector('.back2').addEventListener('click',()=>{
 
 //to delet last message sent
 div4.querySelector('#deletmessage').addEventListener('click',()=>{
-    let x=localStorage.getItem('messageid');
-    let tok=localStorage.getItem('storedItem');
+    let x=sessionStorage.getItem('messageid');
+    let tok=sessionStorage.getItem('storedItem');
     fetch(`https://webexapis.com/v1/messages/${x}`,{
         method:'DELETE',
         headers:{
@@ -281,10 +281,10 @@ div4.querySelector('#deletmessage').addEventListener('click',()=>{
 
 /*MEETING SECTION*/
 document.querySelector('#showmsg').addEventListener('click',async()=>{
-   let res= await fetch(`https://webexapis.com/v1/messages?roomId=${localStorage.getItem('activeid')}&max=100`,{
+   let res= await fetch(`https://webexapis.com/v1/messages?roomId=${sessionStorage.getItem('activeid')}&max=100`,{
        method:'GET',
        headers:{
-           'Authorization':`Bearer ${localStorage.getItem('storedItem')}`
+           'Authorization':`Bearer ${sessionStorage.getItem('storedItem')}`
        }
    })
    let res2=await res.json();
