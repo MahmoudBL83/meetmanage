@@ -304,8 +304,11 @@ document.querySelector('#listmsg').querySelector('.back2').addEventListener('cli
 })
 
 document.querySelector('#roomsec').querySelector('.back2').addEventListener('click',()=>{
+    let x= document.querySelector('#roomsec').querySelectorAll('div');
+    for(i=1;i<x.length;i++){
+        x[i].remove()
+    }
     document.querySelector('#roomsec').style='display:none;';
-    document.querySelector('#roomsec').innerHTML='<div class="back2">العودة</div>'
     landingPage.style='height:100vh;width:100vw;';
 })
 
