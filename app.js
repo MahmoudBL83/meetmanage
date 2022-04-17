@@ -321,16 +321,14 @@ document.querySelector('#memberships').addEventListener('click',async()=>{
     let roomid=sessionStorage.getItem('activeid');
     div2.style='display:none;'
     document.querySelector('#membershipsec').style='display: flex; flex-wrap: wrap; justify-content: center; align-items: center; height: 100%; width: 100%; background-color: rgb(236, 236, 236);'
-    let memberslist=await fetch(`https://webexapis.com/v1/memberships?roomId=${roomid}`,{
+    let res=await fetch(`https://webexapis.com/v1/memberships?roomId=${roomid}`,{
         method:'GET',
         headers:{
             'Authorization':`Bearer ${sessionStorage.getItem('storedItem')}`
         }
     })
-    await memberslist.json();
-    console.log(memberslist.items);
-    typeof memberslist.itmes;
-    for(i=0;i<memberslist.items.length;i++){
+    let y=await res.json();
+    for(i=0;i<y.items.length;i++){
         let member=document.createElement('div')
         member.setAttribute('id',`member${i+1}`);
         member.classList.add('membercard');
