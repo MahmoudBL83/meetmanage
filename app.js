@@ -333,10 +333,10 @@ document.querySelector('#memberships').addEventListener('click',async()=>{
         member.setAttribute('id',`member${i+1}`);
         member.classList.add('membercard');
         if(y.items[i].isModerator==true){
-            member.innerHTML=`<span>${y.items[i].personEmail}</span><span>${y.items[i].personDisplayName}</span><span style='display:inline-block!important;'>عضو</span><label class="switch"><input type="checkbox" checked><span class="slider round"></span></label><span style='display:inline-block!important;'>مدير</span>`;
+            member.innerHTML=`<span>${y.items[i].personEmail}</span><span>${y.items[i].personDisplayName}</span><span style='display:inline-block!important;margin-right: 7px;'>عضو</span><label class="switch"><input type="checkbox" checked><span class="slider round"></span></label><span style='display:inline-block!important;margin-left: 70px;'>مدير</span>`;
         }
         else{
-            member.innerHTML=`<span>${y.items[i].personEmail}</span><span>${y.items[i].personDisplayName}</span><span style='display:inline-block!important;'>مدير</span><label class="switch"><input type="checkbox" checked><span class="slider round"></span></label><span style='display:inline-block!important;'>عضو</span>`;
+            member.innerHTML=`<span>${y.items[i].personEmail}</span><span>${y.items[i].personDisplayName}</span><span style='display:inline-block!important;margin-right: 7px;'>مدير</span><label class="switch"><input type="checkbox" checked><span class="slider round"></span></label><span style='display:inline-block!important;margin-left: 70px;'>عضو</span>`;
         }
         document.querySelector('#membershipsec').appendChild(member);
     }
