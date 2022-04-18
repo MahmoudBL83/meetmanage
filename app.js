@@ -342,9 +342,7 @@ document.querySelector('#memberships').addEventListener('click',async()=>{
         sessionStorage.setItem(`membersids${i+1}`,y.items[i].id)
         sessionStorage.setItem(`booleans${i+1}`,y.items[i].isModerator)
     }
-})
-
-let members=document.querySelectorAll('.membercard');
+    let members=document.querySelectorAll('.membercard');
     for(i=0;i<members.length;i++){
         members[i].querySelector('.slider').addEventListener('click',async(evt)=>{
             console.log(member[0])
@@ -369,4 +367,5 @@ let members=document.querySelectorAll('.membercard');
             }
         })
     }
+})
 
