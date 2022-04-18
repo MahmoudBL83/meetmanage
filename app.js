@@ -333,10 +333,10 @@ document.querySelector('#memberships').addEventListener('click',async()=>{
         member.setAttribute('id',`member${i+1}`);
         member.classList.add('membercard');
         if(y.items[i].isModerator==true){
-            member.innerHTML=`<span>${y.items[i].personEmail}</span><span>${y.items[i].personDisplayName}</span><span style='display:inline-block!important;margin-right: 7px;'>عضو</span><label id=${i+1} class="switch"><input type="checkbox" checked><span class="slider round"></span></label><span style='display:inline-block!important;margin-left: 70px;'>مدير</span>`;
+            member.innerHTML=`<span>${y.items[i].personEmail}</span><span>${y.items[i].personDisplayName}</span><span style='display:inline-block!important;margin-right: 7px;'>عضو</span><label class="switch"><input type="checkbox" checked><span class="slider round" id=${i+1}></span></label><span style='display:inline-block!important;margin-left: 70px;'>مدير</span>`;
         }
         else{
-            member.innerHTML=`<span>${y.items[i].personEmail}</span><span>${y.items[i].personDisplayName}</span><span style='display:inline-block!important;margin-right: 7px;'>مدير</span><label id=${i+1} class="switch"><input type="checkbox" checked><span class="slider round"></span></label><span style='display:inline-block!important;margin-left: 70px;'>عضو</span>`;
+            member.innerHTML=`<span>${y.items[i].personEmail}</span><span>${y.items[i].personDisplayName}</span><span style='display:inline-block!important;margin-right: 7px;'>مدير</span><label class="switch"><input type="checkbox" checked><span class="slider round" id=${i+1}></span></label><span style='display:inline-block!important;margin-left: 70px;'>عضو</span>`;
         }
         document.querySelector('#membershipsec').appendChild(member);
         sessionStorage.setItem(`membersids${i+1}`,y.items[i].id)
@@ -346,10 +346,10 @@ document.querySelector('#memberships').addEventListener('click',async()=>{
 
 let members=document.querySelectorAll('.membercard');
     for(i=0;i<members.length;i++){
-        members[i].querySelector('label').querySelector('.slider').addEventListener('click',async(evt)=>{
+        members[i].querySelector('.slider').addEventListener('click',async(evt)=>{
             console.log(member[0])
             console.log('hello');
-            let num=evt.target.id;
+            let num=evt.target.value;
             console.log(num);
             let activememberid=sessionStorage.getItem(`membersids${num}`)
             await fetch(`https://webexapis.com/v1/memberships/${activememberid}`,{
