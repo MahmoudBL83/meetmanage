@@ -345,9 +345,9 @@ document.querySelector('#memberships').addEventListener('click',async()=>{
     let members=document.querySelectorAll('.membercard');
     for(i=0;i<members.length;i++){
         members[i].querySelector('.slider').addEventListener('click',async(evt)=>{
-            console.log('lo');
+            console.log(sessionStorage['booleans'+num])
             let num=evt.target.id;
-            console.log(num);
+            typeof(num);
             let activememberid=sessionStorage.getItem('membersids'+num)
             await fetch(`https://webexapis.com/v1/memberships/${activememberid}`,{
             method: 'PUT',
@@ -361,6 +361,7 @@ document.querySelector('#memberships').addEventListener('click',async()=>{
             })
             try {
                 sessionStorage['booleans'+num]=!sessionStorage['booleans'+num];
+                console.log(sessionStorage['booleans'+num])
             } catch (error) {
                 console.log(error);
             }
