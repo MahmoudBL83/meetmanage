@@ -347,7 +347,9 @@ document.querySelector('#memberships').addEventListener('click',async()=>{
 let members=document.querySelectorAll('.membercard');
     for(i=0;i<members.length;i++){
         members[i].querySelector('label').addEventListener('click',async(evt)=>{
+            console.log('hello');
             let num=evt.target.id;
+            console.log(num);
             let activememberid=sessionStorage.getItem(`membersids${num}`)
             await fetch(`https://webexapis.com/v1/memberships/${activememberid}`,{
             method: 'PUT',
