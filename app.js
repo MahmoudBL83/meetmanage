@@ -345,8 +345,8 @@ document.querySelector('#memberships').addEventListener('click',async()=>{
     let members=document.querySelectorAll('.membercard');
     for(i=0;i<members.length;i++){
         members[i].querySelector('.slider').addEventListener('click',async(evt)=>{
-            console.log(sessionStorage['booleans'+num])
             let num=evt.target.id;
+            console.log(sessionStorage['booleans'+num])
             typeof(num);
             let activememberid=sessionStorage.getItem('membersids'+num)
             await fetch(`https://webexapis.com/v1/memberships/${activememberid}`,{
