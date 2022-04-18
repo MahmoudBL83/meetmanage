@@ -356,12 +356,16 @@ document.querySelector('#memberships').addEventListener('click',async()=>{
 				'Authorization': `Bearer ${sessionStorage.getItem('storedItem')}`
 			},
             body:JSON.stringify({
-                'isModerator':!sessionStorage.getItem('booleans'+num),
+                'isModerator':!sessionStorage['booleans'+num]
             })
             })
             try {
-                sessionStorage['booleans'+num]=!sessionStorage['booleans'+num];
-                console.log(sessionStorage['booleans'+num])
+                if(sessionStorage['booleans'+num]=false){
+                    sessionStorage['booleans'+num]=true;
+                }
+                if(sessionStorage['booleans'+num]=true){
+                    sessionStorage['booleans'+num]=true;
+                }
             } catch (error) {
                 console.log(error);
             }
