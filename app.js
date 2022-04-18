@@ -345,7 +345,6 @@ document.querySelector('#memberships').addEventListener('click',async()=>{
     let members=document.querySelectorAll('.membercard');
     for(i=0;i<members.length;i++){
         members[i].querySelector('.slider').addEventListener('click',async(evt)=>{
-            console.log(member[0])
             console.log('hello');
             let num=evt.target.id;
             console.log(num);
