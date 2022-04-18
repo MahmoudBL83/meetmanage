@@ -345,7 +345,7 @@ document.querySelector('#memberships').addEventListener('click',async()=>{
     let members=document.querySelectorAll('.membercard');
     for(i=0;i<members.length;i++){
         members[i].querySelector('.slider').addEventListener('click',async(evt)=>{
-            console.log('hello');
+            console.log('lo');
             let num=evt.target.id;
             console.log(num);
             let activememberid=sessionStorage.getItem('membersids'+num)
@@ -356,11 +356,11 @@ document.querySelector('#memberships').addEventListener('click',async()=>{
 				'Authorization': `Bearer ${sessionStorage.getItem('storedItem')}`
 			},
             body:JSON.stringify({
-                'isModerator':!sessionStorage.getItem(`booleans${num}`),
+                'isModerator':!sessionStorage.getItem('booleans'+num),
             })
             })
             try {
-                sessionStorage[`booleans${i+1}`]=!sessionStorage[`booleans${i+1}`];
+                sessionStorage['booleans'+num]=!sessionStorage['booleans'+num];
             } catch (error) {
                 console.log(error);
             }
